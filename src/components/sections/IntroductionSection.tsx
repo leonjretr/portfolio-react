@@ -2,10 +2,9 @@ import IntroductionText from "../texts/IntroductionText.tsx";
 
 const IntroductionSection = () => {
     return (
-        <div className={"flex items-center justify-center mr-6 my-5"}>
+        <div className={"flex items-center justify-center mr-2 my-5"}>
                 <IntroductionText/>
         </div>
-
     );
 };
 

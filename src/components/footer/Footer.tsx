@@ -2,8 +2,8 @@ import FooterSocialButton from "../buttons/FooterSocialButton.tsx";
 
 const Footer = () => {
     return (
-        <div className="flex fixed bottom-0 justify-between h-20 rounded-t-xl items-center w-full bg-cyan-50">
-            <div className={"font-poppinsFont font-medium m-4"}>
+        <div className="flex fixed bottom-0 justify-center lg:justify-between h-20 rounded-t-xl items-center w-full bg-cyan-50">
+            <div className={"hidden lg:flex font-poppinsFont font-medium m-4"}>
                 &copy; Leonid Svietlychnyi &mdash; {new Date().getFullYear()}
             </div>
             <div className={""}>
