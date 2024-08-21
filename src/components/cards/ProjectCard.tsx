@@ -34,11 +34,11 @@ const ProjectCard: FC<ProjectCardProps> = ({title, description, deepDescription,
         <div
             className="max-w-48 mob3:max-w-52 md:max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <img className="rounded-t-lg" src={image} alt="Project1"/>
-            <div className="p-5">
+            <div className="p-3 mob2:p-5">
                 <h5 className="mb-2 text-base mob3:text-lg lg:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     {title}
                 </h5>
-                <p className="mb-3 text-xs mob3:text-base font-normal text-gray-700 dark:text-gray-400">
+                <p className="mb-3 text-xxs mob1:text-xs mob3:text-base font-normal text-gray-700 dark:text-gray-400">
                     {description}
                 </p>
                 <motion.button

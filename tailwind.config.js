@@ -25,10 +25,13 @@ export default {
                 "150": "44rem",
             },
             screens: {
-                'mob1': '375px',
+                'mob1': '385px',
                 'mob2': '450px',
                 'mob3': '540px'
             },
+            fontSize:{
+                xxs:"0.5rem"
+            }
         },
     },
     plugins: [],
