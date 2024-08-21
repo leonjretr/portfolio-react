@@ -7,7 +7,7 @@ import {observer} from "mobx-react-lite";
 const Terminal: React.FC = observer(() => {
     const welcomingTitle = 'Welcome to LeoTerm3000.';
     const helpTitle = "Available commands: name *your name*, email *your email*, message *your message*; To send: send data, to clear the terminal: clear"
-    const terminalTitle = 'leonterminal $ ';
+    const terminalTitle = 'leonterminal$ ';
 
     const [input, setInput] = useState('');
     const [history, setHistory] = useState<string[]>([]);
@@ -68,7 +68,7 @@ const Terminal: React.FC = observer(() => {
                     output = `Command not found: ${command}`;
                 }
         }
-        setHistory([...history, `leonterminal $ ${command}`, output]);
+        setHistory([...history, `leonterminal$ ${command}`, output]);
     };
 
     useEffect(() => {
@@ -106,12 +106,12 @@ const Terminal: React.FC = observer(() => {
                 <div>
                     {helpTitle}
                 </div>
-                <div className={"flex items-center mt-2 gap-3"}>
+                <div className={"flex items-center mt-2 gap-2"}>
                     <div className={"text-gray-400"}>
                         {terminalTitle}
                     </div>
                     <input
-                        className="flex justify-self-start bg-transparent text-white outline-none w-72"
+                        className="flex justify-self-start bg-transparent text-white outline-none w-full"
                         type="text"
                         value={input}
                         onChange={handleInput}

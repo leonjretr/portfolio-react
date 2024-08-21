@@ -10,9 +10,10 @@ interface ProjectCardProps {
     title: string;
     description: string;
     deepDescription: string;
+    internalTitle?: string;
 }
 
-const ProjectCard: FC<ProjectCardProps> = ({title, description, deepDescription, image}) => {
+const ProjectCard: FC<ProjectCardProps> = ({title, description, deepDescription, internalTitle, image}) => {
 
     const [isModalOpened, setIsModalOpened] = useState(false);
 
@@ -63,27 +64,31 @@ const ProjectCard: FC<ProjectCardProps> = ({title, description, deepDescription,
                     <h2 className="text-xl text-center text-black font-poppinsFont font-semibold mb-3">
                         {title}
                     </h2>
-                    {/*<h2 className="text-base text-center text-black font-poppinsFont font-semibold mb-1">*/}
-
-                    {/*</h2>*/}
-                    <div className={"flex justify-center mb-4"}>
-                        <img className={"rounded-lg w-max h-44"} src={image} alt={"Project Image"}/>
+                    <div className={"flex justify-center mb-3"}>
+                        <img className={"rounded-lg w-5/6 h-full"} src={image} alt={"Project Image"}/>
                     </div>
-                    <h2 className="flex justify-center text-base text-center text-black font-poppinsFont font-bold mb-2">
+                    <h2 className="flex justify-center text-base text-center text-black font-poppinsFont font-bold break-keep mb-2">
+                        {internalTitle}
+                        {/*<img className={"w-6 h-6"} src={coinUrl} alt={"Coin"}/>*/}
+                    </h2>
+                    <h2 className="flex justify-center text-sm text-justify text-black font-poppinsFont font-medium break-keep mb-2">
                         {deepDescription}
                         {/*<img className={"w-6 h-6"} src={coinUrl} alt={"Coin"}/>*/}
                     </h2>
-                    <SocialLinkButton icon={<FaGithub/>} link={GITHUB_LINK}/>
-                    <h2 className="text-sm text-center text-gray-500 font-poppinsFont font-semibold mb-2">
-                        Do you want to start this task?
-                    </h2>
+                    <div className={"animate-bounce mt-3"}>
+                        <SocialLinkButton icon={<FaGithub/>} link={GITHUB_LINK}/>
+                    </div>
 
-                    <motion.button
-                        whileTap={{scale: 0.9}}
-                        onClick={closeModal}
-                        className="w-auto px-4 py-2 bg-red-500 text-white text-center rounded-md hover:bg-red-600 active:ring active:ring-gray-400 font-medium">
-                        Close
-                    </motion.button>
+                    {/*<h2 className="text-sm text-center text-gray-500 font-poppinsFont font-semibold mb-2">*/}
+                    {/*    Do you want to start this task?*/}
+                    {/*</h2>*/}
+
+                    {/*<motion.button*/}
+                    {/*    whileTap={{scale: 0.9}}*/}
+                    {/*    onClick={closeModal}*/}
+                    {/*    className="w-auto px-4 py-2 bg-red-500 text-white text-center rounded-md hover:bg-red-600 active:ring active:ring-gray-400 font-medium">*/}
+                    {/*    Close*/}
+                    {/*</motion.button>*/}
                 </ModalProjectCard>
 
             </div>
