@@ -8,13 +8,10 @@ import ContactSection from "../sections/ContactSection.tsx";
 import ToastStore from "../../stores/ToastStore.ts";
 import {observer} from "mobx-react-lite";
 import Toast from "../toasts/Toast.tsx";
-import {useEffect} from "react";
 
 const MainPage = observer(() => {
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [])
+
 
     // const render = () => {
     //     if (ToastStore.showToast) {

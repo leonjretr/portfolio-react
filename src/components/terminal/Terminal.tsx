@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState} from 'react';
 import emailjs from "@emailjs/browser";
 import {PUBLIC_KEY, SERVICE_ID, TEMPLATE_ID} from "../../config/constants.ts";
 import ToastStore from "../../stores/ToastStore.ts";
@@ -11,7 +11,7 @@ const Terminal: React.FC = observer(() => {
 
     const [input, setInput] = useState('');
     const [history, setHistory] = useState<string[]>([]);
-    const terminalRef = useRef<HTMLDivElement>(null);
+    // const terminalRef = useRef<HTMLDivElement>(null);
     const [formName, setFormName] = useState("");
     const [formEmail, setFormEmail] = useState("");
     const [formMessage, setFormMessage] = useState("");
@@ -71,9 +71,9 @@ const Terminal: React.FC = observer(() => {
         setHistory([...history, `leonterminal$ ${command}`, output]);
     };
 
-    useEffect(() => {
-        terminalRef.current?.scrollIntoView({behavior: 'smooth'});
-    }, [history]);
+    // useEffect(() => {
+    //     terminalRef.current?.scrollIntoView({behavior: 'smooth'});
+    // }, [history]);
 
     const sendEmail = () => {
         const templateParams = {
@@ -98,7 +98,8 @@ const Terminal: React.FC = observer(() => {
     }
 
     return (
-        <div className="flex flex-col bg-indigo-950 text-white text-sm font-terminalFont w-96 h-64 xl:w-130 xl:h-80 p-4 rounded-lg">
+        <div
+            className="flex flex-col bg-indigo-950 text-white text-sm font-terminalFont w-96 h-64 xl:w-130 xl:h-80 p-4 rounded-lg">
             <div className={"flex flex-col"}>
                 <div>
                     {welcomingTitle}
@@ -116,15 +117,14 @@ const Terminal: React.FC = observer(() => {
                         value={input}
                         onChange={handleInput}
                         onKeyDown={handleKeyDown}
-                        autoFocus
                     />
                 </div>
             </div>
-            <div className="overflow-y-auto h-full mt-2">
+            <div className="h-full mt-2">
                 {history.map((item, index) => (
                     <div key={index}>{item}</div>
                 ))}
-                <div ref={terminalRef}></div>
+                {/*<div ref={terminalRef}></div>*/}
             </div>
         </div>
     );
