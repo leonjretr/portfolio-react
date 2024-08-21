@@ -3,6 +3,7 @@ import {FC, useEffect, useState} from "react";
 import ModalProjectCard from "../modals/ModalProjectCard.tsx";
 import SocialLinkButton from "../buttons/SocialLinkButton.tsx";
 import {FaGithub} from "react-icons/fa";
+import {GITHUB_LINK} from "../../config/constants.ts";
 
 interface ProjectCardProps {
     image?: string;
@@ -72,7 +73,7 @@ const ProjectCard: FC<ProjectCardProps> = ({title, description, deepDescription,
                         {deepDescription}
                         {/*<img className={"w-6 h-6"} src={coinUrl} alt={"Coin"}/>*/}
                     </h2>
-                    <SocialLinkButton icon={<FaGithub/>}/>
+                    <SocialLinkButton icon={<FaGithub/>} link={GITHUB_LINK}/>
                     <h2 className="text-sm text-center text-gray-500 font-poppinsFont font-semibold mb-2">
                         Do you want to start this task?
                     </h2>
