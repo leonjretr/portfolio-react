@@ -15,6 +15,9 @@ export default {
             },
             colors: {
                 mainColor: "#e5e7eb",
+                greenNew:"#50B9A6",
+                greenDark:"#29665B",
+                amateurColor:"#F4BB44",
             },
             spacing: {
                 "88": "22rem",

@@ -10,21 +10,13 @@ import {observer} from "mobx-react-lite";
 import Toast from "../toasts/Toast.tsx";
 
 const MainPage = observer(() => {
-
-
-    // const render = () => {
-    //     if (ToastStore.showToast) {
-    //         return <Toast/>
-    //     }
-    // };
-
     return (
         <div className={"flex flex-col min-h-screen pb-20"}>
             <PageWrapper>
-                <div className={"#home"} id={"home"}>
-                    <IntroductionSection/>
-                    <PhotoSection/>
-                </div>
+
+                <IntroductionSection/>
+                <PhotoSection/>
+
 
                 <HorizontalDivider/>
 
