@@ -39,7 +39,7 @@ const ProjectCard: FC<ProjectCardProps> = ({title, description, deepDescription,
                 <h5 className="mb-2 text-base mob3:text-lg lg:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     {title}
                 </h5>
-                <p className="mb-3 text-xxs mob1:text-xs mob3:text-base font-normal text-gray-700 dark:text-gray-400">
+                <p className="mb-3 text-xs mob1:text-sm mob3:text-base font-normal text-gray-700 dark:text-gray-400">
                     {description}
                 </p>
                 <motion.button
