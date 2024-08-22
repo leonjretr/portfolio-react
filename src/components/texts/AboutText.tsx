@@ -8,7 +8,7 @@ const AboutText = () => {
             Integer metus mauris, rhoncus sit amet dolor et, fringilla ultrices leo.
             Pellentesque a justo <Popover linkToWiki={"https://www.google.com/search?q=Kharkiv+National+University+of+Economics"}
             title={"About university"} description={"Kharkiv National University of Economics is the largest economic higher educational and research institution in Eastern Ukraine."}>
-                <div className={"underline text-sm md:text-base hover:no-underline text-blue-500"}>dignissim</div>
+                <div className={"underline text-sm md:text-base lg:text-lg hover:no-underline text-blue-500"}>dignissim</div>
             </Popover> malesuada mauris vitae, fermentum libero.
             Praesent magna leo, commodo sit amet hendrerit dictum, aliquet laoreet elit.
             Mauris et lorem justo. Aenean in posuere arcu, a hendrerit dolor.
