@@ -12,7 +12,6 @@ import Toast from "../toasts/Toast.tsx";
 const MainPage = observer(() => {
 
 
-
     // const render = () => {
     //     if (ToastStore.showToast) {
     //         return <Toast/>
@@ -22,20 +21,28 @@ const MainPage = observer(() => {
     return (
         <div className={"flex flex-col min-h-screen pb-20"}>
             <PageWrapper>
-                <IntroductionSection/>
-                <PhotoSection/>
+                <div className={"#home"} id={"home"}>
+                    <IntroductionSection/>
+                    <PhotoSection/>
+                </div>
 
                 <HorizontalDivider/>
 
-                <AboutSection/>
+                <div className={"#about"} id={"about"}>
+                    <AboutSection/>
+                </div>
 
                 <HorizontalDivider/>
 
-                <ProjectSection/>
+                <div className={"#projects"} id={"projects"}>
+                    <ProjectSection/>
+                </div>
 
                 <HorizontalDivider/>
 
-                <ContactSection/>
+                <div className={"#contact"}>
+                    <ContactSection/>
+                </div>
 
                 <div className={"flex"}>
                     {ToastStore.showToast && <Toast/>}

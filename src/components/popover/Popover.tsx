@@ -23,18 +23,18 @@ const Popover: React.FC<PopoverProps> = ({children, title, description, linkToWi
                 <div
                     onMouseEnter={() => setIsVisible(true)}
                     onMouseLeave={() => setIsVisible(false)}
-                    className="absolute z-10 w-96 h-auto bottom-full text-sm text-white bg-white rounded-md shadow-lg">
+                    className="absolute z-10 w-32 sm:w-80 lg:w-96 h-auto bottom-full text-sm text-white bg-white rounded-md shadow-lg">
                     <div className="flex justify-between h-auto">
                         <div className="col-span-3 p-3">
                             <div className="space-y-2">
-                                <h3 className="font-semibold text-black dark:text-white">{title}</h3>
-                                <p className={"text-sm text-gray-900 text-left"}>{description}</p>
+                                <h3 className="font-semibold text-xs sm:text-sm text-black dark:text-white">{title}</h3>
+                                <p className={"text-xs sm:text-sm text-gray-900 text-left"}>{description}</p>
                                 <a target="_blank" href={linkToWiki}
                                    className="flex items-center font-medium text-blue-600 dark:text-blue-500 dark:hover:text-blue-600 hover:text-blue-700 hover:underline">Read
                                     more </a>
                             </div>
                         </div>
-                        <img src={uni} className="w-2/4 h-11/12 rounded-lg p-1 " alt="Popover Image"/>
+                        <img src={uni} className="w-2/4 h-full rounded-lg p-1 hidden md:flex" alt="Popover Image"/>
                     </div>
                 </div>
             )}
