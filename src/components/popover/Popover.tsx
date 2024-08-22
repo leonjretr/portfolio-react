@@ -15,7 +15,7 @@ const Popover: React.FC<PopoverProps> = ({children, title, description, linkToWi
             <div
                 onMouseEnter={() => setIsVisible(true)}
                 onMouseLeave={() => setIsVisible(false)}
-                className="cursor-pointer text-sm md:text-base lg:text-lg"
+                className="text-sm md:text-base lg:text-lg"
             >
                 {children}
             </div>
