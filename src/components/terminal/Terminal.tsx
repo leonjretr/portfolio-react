@@ -101,18 +101,18 @@ const Terminal: React.FC = observer(() => {
         <div
             className="flex flex-col bg-indigo-950 text-white text-sm font-terminalFont w-96 h-64 xl:w-130 xl:h-80 p-4 rounded-lg">
             <div className={"flex flex-col"}>
-                <div>
+                <div className={"text-xs md:text-sm"}>
                     {welcomingTitle}
                 </div>
-                <div>
+                <div className={"text-xs md:text-sm"}>
                     {helpTitle}
                 </div>
                 <div className={"flex items-center mt-2 gap-2"}>
-                    <div className={"text-gray-400"}>
+                    <div className={"text-gray-400 text-xs md:text-sm"}>
                         {terminalTitle}
                     </div>
                     <input
-                        className="flex justify-self-start bg-transparent text-white outline-none w-full"
+                        className="flex justify-self-start bg-transparent text-white text-xs md:text-sm outline-none w-full"
                         type="text"
                         value={input}
                         onChange={handleInput}
@@ -120,7 +120,7 @@ const Terminal: React.FC = observer(() => {
                     />
                 </div>
             </div>
-            <div className="h-full mt-2">
+            <div className="h-full overflow-y-auto mt-2 text-xs md:text-sm">
                 {history.map((item, index) => (
                     <div key={index}>{item}</div>
                 ))}

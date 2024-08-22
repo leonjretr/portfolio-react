@@ -3,7 +3,7 @@ import Terminal from "../terminal/Terminal.tsx";
 const ContactSection = () => {
     return (
         <div className={"flex flex-col mb-5 justify-center"}>
-            <h1 className={"font-interFont text-5xl font-bold text-center mb-5"}>Contact me</h1>
+            <h1 className={"font-interFont text-3xl md:text-5xl font-bold text-center mb-3 md:mb-6"}>Contact me</h1>
             <div className={"flex justify-center"}>
                 <Terminal/>
                 {/*<div className={"flex flex-col px-5 rounded-lg"}>*/}

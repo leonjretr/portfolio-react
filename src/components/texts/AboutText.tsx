@@ -2,7 +2,7 @@ import Popover from "../popover/Popover.tsx";
 
 const AboutText = () => {
     return (
-        <div className={"text-justify font-poppinsFont text-lg mx-10 sm:mx-14 md:mx-20 lg:mx-32 xl:mx-36 font-medium"}>
+        <div className={"text-justify font-poppinsFont text-sm md:text-base lg:text-lg mx-10 md:mx-20 lg:mx-32 xl:mx-36 font-medium"}>
             Originally from Ukraine, currently residing in England. Lorem ipsum dolor sit amet, consectetur
             adipiscing elit. Aliquam sit amet felis tortor.
             Integer metus mauris, rhoncus sit amet dolor et, fringilla ultrices leo.
