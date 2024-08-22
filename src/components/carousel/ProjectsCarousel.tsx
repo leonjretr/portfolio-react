@@ -5,7 +5,7 @@ import {AnimatePresence, motion} from 'framer-motion';
 
 const MultiCardCarousel: React.FC = () => {
     const [currentIndex, setCurrentIndex] = React.useState(0);
-    const [direction, setDirection] = useState(true);
+    const [direction, setDirection] = useState(0);
 
     const projImg1 = new URL("/imgs/portfolio1.png", import.meta.url).href;
     const projImg2 = new URL("/imgs/portfolio1.png", import.meta.url).href;
@@ -29,28 +29,28 @@ const MultiCardCarousel: React.FC = () => {
     ];
 
     const handleNext = () => {
-        setDirection(true);
+        setDirection(1);
         setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
     };
 
     const handlePrev = () => {
-        setDirection(false);
+        setDirection(-1);
         setCurrentIndex((prevIndex) => (prevIndex - 1 + projects.length) % projects.length);
     };
     if (currentIndex > projects.length + 1) {
         setCurrentIndex(0)
     }
     const variants = {
-        enter: (direction: boolean) => ({
-            x: !direction ? 100 : -100,
+        enter: (direction: number) => ({
+            x: direction === 1 ? 100 : -100,
             opacity: 0,
         }),
         animate: {
             x: 0,
             opacity: 1,
         },
-        exit: (direction: boolean) => ({
-            x: direction ? -100 : 100,
+        exit: (direction: number) => ({
+            x: direction === 1 ? -100 : 100,
             opacity: 0,
         }),
     }
