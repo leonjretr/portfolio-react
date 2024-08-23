@@ -8,7 +8,7 @@ const MultiCardCarousel: React.FC = () => {
     const [direction, setDirection] = useState(0);
 
     const projImg1 = new URL("/imgs/portfolio1.png", import.meta.url).href;
-    const projImg2 = new URL("/imgs/portfolio1.png", import.meta.url).href;
+    const projImg2 = new URL("/imgs/traffix2.png", import.meta.url).href;
 
     const projects = [
         <ProjectCard key={1}
