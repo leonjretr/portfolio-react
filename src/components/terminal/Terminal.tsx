@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState} from 'react';
 import emailjs from "@emailjs/browser";
 import {PUBLIC_KEY, SERVICE_ID, TEMPLATE_ID} from "../../config/constants.ts";
 import ToastStore from "../../stores/ToastStore.ts";
@@ -7,11 +7,11 @@ import {observer} from "mobx-react-lite";
 const Terminal: React.FC = observer(() => {
     const welcomingTitle = 'Welcome to LeoTerm3000.';
     const helpTitle = "Available commands: name *your name*, email *your email*, message *your message*; To send: send data, to clear the terminal: clear"
-    const terminalTitle = 'leonterminal $ ';
+    const terminalTitle = 'leonterminal$ ';
 
     const [input, setInput] = useState('');
     const [history, setHistory] = useState<string[]>([]);
-    const terminalRef = useRef<HTMLDivElement>(null);
+    // const terminalRef = useRef<HTMLDivElement>(null);
     const [formName, setFormName] = useState("");
     const [formEmail, setFormEmail] = useState("");
     const [formMessage, setFormMessage] = useState("");
@@ -68,12 +68,12 @@ const Terminal: React.FC = observer(() => {
                     output = `Command not found: ${command}`;
                 }
         }
-        setHistory([...history, `leonterminal $ ${command}`, output]);
+        setHistory([...history, `leonterminal$ ${command}`, output]);
     };
 
-    useEffect(() => {
-        terminalRef.current?.scrollIntoView({behavior: 'smooth'});
-    }, [history]);
+    // useEffect(() => {
+    //     terminalRef.current?.scrollIntoView({behavior: 'smooth'});
+    // }, [history]);
 
     const sendEmail = () => {
         const templateParams = {
@@ -98,33 +98,33 @@ const Terminal: React.FC = observer(() => {
     }
 
     return (
-        <div className="flex flex-col bg-indigo-950 text-white text-sm font-terminalFont w-130 h-80 p-4 rounded-lg">
+        <div
+            className="flex flex-col bg-indigo-950 text-white text-sm font-terminalFont w-96 h-64 xl:w-130 xl:h-80 p-4 rounded-lg">
             <div className={"flex flex-col"}>
-                <div>
+                <div className={"text-xs md:text-sm"}>
                     {welcomingTitle}
                 </div>
-                <div>
+                <div className={"text-xs md:text-sm"}>
                     {helpTitle}
                 </div>
-                <div className={"flex items-center mt-2 gap-3"}>
-                    <div className={"text-gray-400"}>
+                <div className={"flex items-center mt-2 gap-2"}>
+                    <div className={"text-gray-400 text-xs md:text-sm"}>
                         {terminalTitle}
                     </div>
                     <input
-                        className="flex justify-self-start bg-transparent text-white outline-none w-72"
+                        className="flex justify-self-start bg-transparent text-white text-xs md:text-sm outline-none w-full"
                         type="text"
                         value={input}
                         onChange={handleInput}
                         onKeyDown={handleKeyDown}
-                        autoFocus
                     />
                 </div>
             </div>
-            <div className="overflow-y-auto h-full mt-2">
+            <div className="h-full overflow-y-auto mt-2 text-xs md:text-sm">
                 {history.map((item, index) => (
                     <div key={index}>{item}</div>
                 ))}
-                <div ref={terminalRef}></div>
+                {/*<div ref={terminalRef}></div>*/}
             </div>
         </div>
     );

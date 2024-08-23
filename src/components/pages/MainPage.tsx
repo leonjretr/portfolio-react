@@ -8,37 +8,33 @@ import ContactSection from "../sections/ContactSection.tsx";
 import ToastStore from "../../stores/ToastStore.ts";
 import {observer} from "mobx-react-lite";
 import Toast from "../toasts/Toast.tsx";
-import {useEffect} from "react";
 
 const MainPage = observer(() => {
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [])
-
-    // const render = () => {
-    //     if (ToastStore.showToast) {
-    //         return <Toast/>
-    //     }
-    // };
-
     return (
-        <div className={"flex flex-col min-h-screen pb-20"}>
+        <div className={"flex flex-col min-h-screen pb-20 scroll-smooth"}>
             <PageWrapper>
-                <IntroductionSection/>
-                <PhotoSection/>
+                <div id={"home"}>
+                    <IntroductionSection/>
+                    <PhotoSection/>
+                </div>
 
                 <HorizontalDivider/>
 
-                <AboutSection/>
+                <div className={"scroll-smooth"} id={"about"}>
+                    <AboutSection/>
+                </div>
 
                 <HorizontalDivider/>
 
-                <ProjectSection/>
+                <div className={"scroll-smooth"} id={"projects"}>
+                    <ProjectSection/>
+                </div>
 
                 <HorizontalDivider/>
 
-                <ContactSection/>
+                <div className={"scroll-smooth"} id={"contact"}>
+                    <ContactSection/>
+                </div>
 
                 <div className={"flex"}>
                     {ToastStore.showToast && <Toast/>}
