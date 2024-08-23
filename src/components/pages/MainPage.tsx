@@ -11,28 +11,28 @@ import Toast from "../toasts/Toast.tsx";
 
 const MainPage = observer(() => {
     return (
-        <div className={"flex flex-col min-h-screen pb-20"}>
+        <div className={"flex flex-col min-h-screen pb-20 scroll-smooth"}>
             <PageWrapper>
-
-                <IntroductionSection/>
-                <PhotoSection/>
-
+                <div id={"home"}>
+                    <IntroductionSection/>
+                    <PhotoSection/>
+                </div>
 
                 <HorizontalDivider/>
 
-                <div className={"#about"} id={"about"}>
+                <div className={"scroll-smooth"} id={"about"}>
                     <AboutSection/>
                 </div>
 
                 <HorizontalDivider/>
 
-                <div className={"#projects"} id={"projects"}>
+                <div className={"scroll-smooth"} id={"projects"}>
                     <ProjectSection/>
                 </div>
 
                 <HorizontalDivider/>
 
-                <div className={"#contact"}>
+                <div className={"scroll-smooth"} id={"contact"}>
                     <ContactSection/>
                 </div>
 

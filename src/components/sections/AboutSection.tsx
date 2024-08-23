@@ -16,10 +16,10 @@ const AboutSection = () => {
     ]
 
     return (
-        <div className={"flex flex-col"}>
+        <div className={"flex flex-col mx-8 md:mx-16 lg:mx-32 xl:mx-36"}>
             <h1 className={"font-interFont text-3xl md:text-5xl font-bold text-center mb-3 md:mb-6"}>About me</h1>
             <AboutText/>
-            <div className={"flex justify-start mx-12 md:mx-20 lg:mx-32 xl:mx-36 gap-1 my-2 flex-wrap select-none"}>
+            <div className={"flex justify-start gap-1 my-2 flex-wrap select-none"}>
                 {skills.map((skill,index) => (
                     <SkillPlate key={index} skillTitle={skill.skillName} color={skill.color}/>
                 ))}

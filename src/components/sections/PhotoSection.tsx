@@ -3,7 +3,7 @@ import {motion} from "framer-motion";
 const PhotoSection = () => {
     const myPhoto = new URL("/imgs/me22.JPG", import.meta.url).href;
     return (
-        <div className={"flex justify-center my-8 md:my-12"}>
+        <div className={"flex justify-center my-8 md:my-16"}>
             <motion.img
                 style={{scale:1.15}}
                 whileHover={{scale: 1.25}}
