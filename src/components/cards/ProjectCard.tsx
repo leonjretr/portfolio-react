@@ -74,7 +74,7 @@ const ProjectCard: FC<ProjectCardProps> = ({title, description, deepDescription,
                         <h2 className="flex justify-center text-sm text-justify max-w-screen-mob2 text-black font-poppinsFont font-medium break-keep mb-2">
                             {deepDescription}
                         </h2>
-                        <div className={"animate-bounce mt-3"}>
+                        <div className={"animate-bounce mt-3 dark:text-black"}>
                             <SocialLinkButton icon={<FaGithub/>} link={GITHUB_LINK}/>
                         </div>
                     </div>
