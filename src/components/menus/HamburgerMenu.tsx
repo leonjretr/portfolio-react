@@ -4,32 +4,11 @@ import HamburgerStore from "../../stores/HamburgerStore.ts";
 
 const HamburgerMenu = () => {
 
-    // const menuVariants = {
-    //     open: {
-    //         height: "auto", // Allow the menu to expand to its full height
-    //         opacity: 1,
-    //         transition: {
-    //             height: { type: "spring", stiffness: 100, damping: 20 },
-    //             opacity: { duration: 0.8 },
-    //             staggerChildren: 0.5,
-    //             delayChildren: 1,
-    //         },
-    //     },
-    //     closed: {
-    //         height: 0,
-    //         opacity: 0,
-    //         transition: {
-    //             height: { type: "spring", stiffness: 100, damping: 20 },
-    //             opacity: { duration: 1 },
-    //         },
-    //     },
-    // };
     const overlayVariants = {
         hidden: {opacity: 0},
         visible: {opacity: 1},
-        exit:{opacity:0}
+        exit: {opacity: 0}
     };
-
 
     return (
         <motion.div
@@ -43,7 +22,7 @@ const HamburgerMenu = () => {
                 initial={{height: 0, opacity: 0}}
                 animate={{height: 'auto', opacity: 1}}
                 exit={{height: 0, opacity: 0}}
-                transition={{duration: 0.3, ease: 'easeInOut'}}
+                transition={{duration: 0.2, ease: 'easeInOut'}}
                 className="flex flex-col items-center justify-start text-left text-sm font-poppinsFont">
                 <HamburgerMenuButtons text={"home"} sectionLink={"home"}/>
                 <HamburgerMenuButtons text={"about"} sectionLink={"about"}/>
