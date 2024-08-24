@@ -11,7 +11,7 @@ import Toast from "../toasts/Toast.tsx";
 
 const MainPage = observer(() => {
     return (
-        <div className={"min-h-screen h-screen scroll-smooth"}>
+        <div className={"min-h-screen bg-white dark:bg-bgDarkColor scroll-smooth"}>
             <PageWrapper>
                 <div id={"home"}>
                     <IntroductionSection/>

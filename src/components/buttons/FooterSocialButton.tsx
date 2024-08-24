@@ -17,7 +17,7 @@ const FooterSocialButton: FC<FooterSocialButtonProps> = ({title, link}) => {
                 className={"relative group font-poppinsFont font-medium m-4 rounded-lg p-1.5"}>
                 {title}
                 <span
-                    className={"absolute bottom-0.5 left-0.5 w-0 h-0.5 bg-black transition-all group-hover:w-full"}></span>
+                    className={"absolute bottom-0.5 left-0.5 w-0 h-0.5 bg-black dark:bg-white transition-all group-hover:w-full"}></span>
             </motion.button>
         </a>
     );

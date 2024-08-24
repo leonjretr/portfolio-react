@@ -27,7 +27,7 @@ const Popover: React.FC<PopoverProps> = ({children, title, description, linkToWi
                     <div className="flex justify-between h-auto">
                         <div className="col-span-3 p-3">
                             <div className="space-y-2">
-                                <h3 className="font-semibold text-xs sm:text-sm text-black dark:text-white">{title}</h3>
+                                <h3 className="font-semibold text-xs sm:text-sm text-black">{title}</h3>
                                 <p className={"text-xs sm:text-sm text-gray-900 text-left"}>{description}</p>
                                 <a target="_blank" href={linkToWiki}
                                    className="flex items-center font-medium text-blue-600 dark:text-blue-500 dark:hover:text-blue-600 hover:text-blue-700 hover:underline">Read

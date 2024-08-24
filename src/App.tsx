@@ -5,7 +5,7 @@ import MyRouting from "./components/routing/MyRouting.tsx";
 function App() {
     return (
         <div>
-            <div className={"min-h-screen bg-white scroll-smooth"}>
+            <div className={"min-h-screen h-screen bg-white dark:bg-bgDarkColor scroll-smooth"}>
                 <Router>
                     <MyRouting/>
                     {/*<MainPage/>*/}

@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+    darkMode: "class",
     content: [
         "./index.html",
         "./src/**/*.{js,ts,jsx,tsx}",
@@ -18,6 +19,7 @@ export default {
                 greenNew:"#50B9A6",
                 greenDark:"#29665B",
                 amateurColor:"#F4BB44",
+                bgDarkColor:"#221F1F",
             },
             spacing: {
                 "88": "22rem",
