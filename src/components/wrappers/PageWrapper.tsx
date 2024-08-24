@@ -1,6 +1,7 @@
 import {FC, ReactNode} from "react";
 import Header from "../header/Header.tsx";
 import Footer from "../footer/Footer.tsx";
+import Headroom from "react-headroom";
 
 interface PageWrapperProps {
     children: ReactNode;
@@ -9,7 +10,9 @@ interface PageWrapperProps {
 const PageWrapper: FC<PageWrapperProps> = ({children}) => {
     return (
         <>
-            <Header/>
+            <Headroom>
+                <Header/>
+            </Headroom>
             {children}
             <Footer/>
         </>

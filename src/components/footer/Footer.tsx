@@ -4,7 +4,7 @@ import {GITHUB_LINK, TELEGRAM_LINK, LINKEDIN_LINK} from "../../config/constants.
 const Footer = () => {
     return (
         <div
-            className="flex fixed bottom-0 justify-center lg:justify-between h-20 rounded-t-xl items-center w-full bg-cyan-50">
+            className="flex bottom-0 justify-center lg:justify-between h-20 rounded-t-xl items-center w-full bg-cyan-50">
             <div className={"hidden lg:flex font-poppinsFont font-medium m-4"}>
                 &copy; Leonid Svietlychnyi &mdash; {new Date().getFullYear()}
             </div>

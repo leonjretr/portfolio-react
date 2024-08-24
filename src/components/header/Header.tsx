@@ -7,10 +7,11 @@ import Hamburger from "../menus/Hamburger.tsx";
 
 const Header = () => {
     return (
-        <div className="flex justify-between p-2 h-20 rounded-b-xl items-center w-auto bg-cyan-50">
-            <div className="">
+        <div className="flex z-50 justify-between p-2 h-20 rounded-b-xl items-center w-full bg-cyan-50">
+            <>
                 <HomeButton/>
-            </div>
+            </>
+
             <div className="hidden md:flex">
                 <Navbar/>
             </div>
