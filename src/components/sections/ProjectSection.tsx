@@ -25,7 +25,7 @@ const ProjectSection = () => {
     ]
 
     return (
-        <div className={"flex flex-col"}>
+        <div className={"flex flex-col dark:text-white"}>
             <h1 className={"font-interFont text-3xl md:text-5xl font-bold text-center mb-5 md:mb-10"}>Projects</h1>
             <div className={"hidden sm:flex justify-center gap-x-2 md:gap-x-6"}>
                 {projectCards.map((projectCard, index) => (
