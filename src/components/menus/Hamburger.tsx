@@ -14,10 +14,10 @@ const Hamburger = observer(() => {
                 whileHover={{scale: 1.1}}
                 whileTap={{scale: 0.95}}
                 animate={HamburgerStore.isOpen ? {rotate:-90} : {rotate:0}}
-                className="inline-flex items-center p-1 w-10 h-10 justify-center text-base text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                className="inline-flex items-center -mt-1 w-10 h-10 justify-center text-base text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                 onClick={toggleMenu}>
                 <svg
-                    className="w-5 h-5"
+                    className="w-8 h-8"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 17 14">
