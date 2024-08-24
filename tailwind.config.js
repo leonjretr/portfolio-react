@@ -7,6 +7,11 @@ export default {
     ],
     theme: {
         extend: {
+            margin: {
+                "0.2": "0.125rem",
+                "0.25":"0.175rem",
+                "0.3": "0.2rem",
+            },
             fontFamily: {
                 niceFont: ['Lora'],
                 niceFontSec: ['Merriweather'],
@@ -16,10 +21,10 @@ export default {
             },
             colors: {
                 mainColor: "#e5e7eb",
-                greenNew:"#50B9A6",
-                greenDark:"#29665B",
-                amateurColor:"#F4BB44",
-                bgDarkColor:"#221F1F",
+                greenNew: "#50B9A6",
+                greenDark: "#29665B",
+                amateurColor: "#F4BB44",
+                bgDarkColor: "#221F1F",
             },
             spacing: {
                 "88": "22rem",
@@ -34,8 +39,8 @@ export default {
                 'mob2': '450px',
                 'mob3': '540px'
             },
-            fontSize:{
-                xxs:"0.5rem"
+            fontSize: {
+                xxs: "0.5rem"
             }
         },
     },

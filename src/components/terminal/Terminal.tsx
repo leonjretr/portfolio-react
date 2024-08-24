@@ -122,7 +122,7 @@ const Terminal: React.FC = observer(() => {
             </div>
             <div className="h-full overflow-y-auto mt-2 text-xs md:text-sm">
                 {history.map((item, index) => (
-                    <div key={index}>{item}</div>
+                    <div key={index} className={"text-xs md:text-sm"}>{item}</div>
                 ))}
                 {/*<div ref={terminalRef}></div>*/}
             </div>
