@@ -1,13 +1,11 @@
 import {motion} from "framer-motion";
 import {useEffect, useState} from "react";
-import { LuSunMedium } from "react-icons/lu";
-import { IoMoonOutline } from "react-icons/io5";
+import {LuSunMedium} from "react-icons/lu";
+import {IoMoonOutline} from "react-icons/io5";
 
 const ThemeToggle = () => {
-    const [checked, setChecked] = useState(false);
-    const [theme, setTheme] = useState<'light' | 'dark'>(
-        localStorage.getItem('theme') === 'dark' ? 'dark' : 'light'
-    );
+    // const [checked, setChecked] = useState(false);
+    const [theme, setTheme] = useState<'light' | 'dark'>("light");
 
     useEffect(() => {
         if (theme === 'dark') {
@@ -20,8 +18,8 @@ const ThemeToggle = () => {
     }, [theme]);
 
     const toggleTheme = () => {
-        setChecked(!checked);
-        setTheme(theme === 'dark' ? 'light' : 'dark');
+        // setChecked(!checked);
+        setTheme(theme === 'light' ? 'dark' : 'light');
         console.log(theme);
     };
 
@@ -32,7 +30,7 @@ const ThemeToggle = () => {
                        className="sr-only"
                        onClick={toggleTheme}
                 />
-                {checked ? (
+                {theme === "dark" ? (
                     <div className={"flex items-center"}>
                         <div className={"relative w-14 h-7 bg-gray-500 rounded-full"}>
                             <motion.div
@@ -42,7 +40,8 @@ const ThemeToggle = () => {
                                 type: "spring",
                                 stiffness: 700,
                                 damping: 30
-                            }}><div className={"m-0.3"}><IoMoonOutline className={"text-white text-lg"}/></div>
+                            }}>
+                                <div className={"m-0.3"}><IoMoonOutline className={"text-white text-lg"}/></div>
                             </motion.div>
                         </div>
                         {/*<span className="ms-2 text-base font-medium font-poppinsFont text-black">🌞</span>*/}
