@@ -13,7 +13,6 @@ const Header = () => {
             <>
                 <HomeButton/>
             </>
-
             <div className="hidden md:flex ml-24">
                 <Navbar/>
             </div>
