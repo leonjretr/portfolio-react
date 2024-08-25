@@ -9,7 +9,7 @@ const Hamburger = observer(() => {
     };
 
     return (
-        <nav className="flex justify-center items-center text-white">
+        <nav className="flex justify-center items-center text-white m-4">
             <motion.button
                 whileHover={{scale: 1.1}}
                 whileTap={{scale: 0.95}}
