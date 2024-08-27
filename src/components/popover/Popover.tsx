@@ -18,10 +18,8 @@ const Popover: React.FC<PopoverProps> = ({children, title, description, linkToWi
         const calculatePosition = () => {
             if (triggerRef.current) {
                 const triggerRect = triggerRef.current.getBoundingClientRect();
-                // const popoverRect = popoverRef.current.getBoundingClientRect();
-// console.log(triggerRect.x);
 
-                // Determine if the popover would go off-screen on the right side
+                // Determine if the popover would go off-screen
                 if (window.innerWidth > 1024) {
                     if (triggerRect.left > 390) {
                         setPosition('left');
@@ -46,11 +44,7 @@ const Popover: React.FC<PopoverProps> = ({children, title, description, linkToWi
             }
         };
         calculatePosition();
-
-        // window.addEventListener('resize', calculatePosition);
-        // return () => window.removeEventListener('resize', calculatePosition);
     }, [position]);
-    // console.log(position);
     return (
         <div className="relative inline-block">
             <div ref={triggerRef}
