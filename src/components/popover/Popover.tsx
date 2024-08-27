@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useLayoutEffect, useRef, useState} from 'react';
 
 interface PopoverProps {
     children: React.ReactNode;
@@ -14,42 +14,43 @@ const Popover: React.FC<PopoverProps> = ({children, title, description, linkToWi
     const [position, setPosition] = useState<'left' | 'right'>('right');
     const triggerRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const calculatePosition = () => {
             if (triggerRef.current) {
                 const triggerRect = triggerRef.current.getBoundingClientRect();
                 // const popoverRect = popoverRef.current.getBoundingClientRect();
+// console.log(triggerRect.x);
 
                 // Determine if the popover would go off-screen on the right side
-                if (window.outerWidth > 1024) {
-                    if (triggerRect.right + 600 > window.innerWidth) {
+                if (window.innerWidth > 1024) {
+                    if (triggerRect.left > 390) {
                         setPosition('left');
-                    } else if (triggerRect.left + 600 > window.innerWidth) {
+                    } else {
                         setPosition('right');
                     }
                 }
-                if (window.outerWidth < 1024 && window.outerWidth > 639) {
-                    if (triggerRect.right + 450 > window.innerWidth) {
+                if (window.innerWidth <= 1024 && window.innerWidth >= 639) {
+                    if (triggerRect.left >= 350) {
                         setPosition('left');
-                    } else if (triggerRect.left + 450 > window.innerWidth) {
+                    } else if(triggerRect.left < 340) {
                         setPosition('right');
                     }
                 }
-                if (window.outerWidth < 639) {
-                    if (triggerRect.right + 260 > window.innerWidth) {
+                if (window.innerWidth < 639) {
+                    if (triggerRect.left > 140) {
                         setPosition('left');
-                    } else if (triggerRect.left + 260 > window.innerWidth) {
+                    } else {
                         setPosition('right');
                     }
                 }
-
             }
         };
         calculatePosition();
-        window.addEventListener('resize', calculatePosition);
-        return () => window.removeEventListener('resize', calculatePosition);
-    }, [position]);
 
+        // window.addEventListener('resize', calculatePosition);
+        // return () => window.removeEventListener('resize', calculatePosition);
+    }, [position]);
+    // console.log(position);
     return (
         <div className="relative inline-block">
             <div ref={triggerRef}
@@ -63,7 +64,7 @@ const Popover: React.FC<PopoverProps> = ({children, title, description, linkToWi
                 <div
                     onMouseEnter={() => setIsVisible(true)}
                     onMouseLeave={() => setIsVisible(false)}
-                    className={`absolute ${position === "left" && "right-full bottom-full"} ${position === "right" && "left-full"} z-10 w-32 sm:w-80 lg:w-96 h-auto text-sm text-white bg-white rounded-md shadow-lg`}
+                    className={`absolute ${position === "left" && "bottom-full sm:right-0"} ${position === "right" && "sm:left-0 bottom-full"} z-10 w-32 sm:w-80 lg:w-96 h-auto text-sm text-white bg-white rounded-md shadow-lg`}
                 >
                     <div className="flex justify-between h-auto items-center">
                         <div className="col-span-3 p-3">
