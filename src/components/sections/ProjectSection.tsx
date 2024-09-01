@@ -8,14 +8,14 @@ const ProjectSection = () => {
     const projectCards = [
         {
             title: "Portfolio website",
-            description: "It is my personal landing page to showcase my skills and experience",
+            description: "My personal landing page to showcase my skills and experience",
             deepDescription: "Personal landing page was my first pet project ever.",
             internalTitle: "Personal landing page",
             image: projImg1
         },
         {
             title: "TraffiX - web app",
-            description: "A revolutionary web app that targets mobile devices and is for Telegram platform",
+            description: "A modern web app that targets Telegram Mini Apps mobile platform",
             deepDescription: "TraffiX is a clicker web game on Telegram platform" +
                 " which became my second pet project, though at first it meant to be commercial." +
                 " It was made by my friend and me, I was responsible for front-end part.",
