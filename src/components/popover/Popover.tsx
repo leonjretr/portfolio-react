@@ -58,7 +58,7 @@ const Popover: React.FC<PopoverProps> = ({children, title, description, linkToWi
                 <div
                     onMouseEnter={() => setIsVisible(true)}
                     onMouseLeave={() => setIsVisible(false)}
-                    className={`absolute ${position === "left" && "bottom-full sm:right-0"} ${position === "right" && "sm:left-0 bottom-full"} z-10 w-32 sm:w-80 lg:w-96 h-auto text-sm text-white bg-white rounded-md shadow-lg`}
+                    className={`absolute ${position === "left" && "bottom-full sm:right-1"} ${position === "right" && "sm:left-1 bottom-full"} z-10 w-32 sm:w-80 lg:w-96 h-auto text-sm text-white bg-white rounded-md shadow-lg`}
                 >
                     <div className="flex justify-between h-auto items-center">
                         <div className="col-span-3 p-3">

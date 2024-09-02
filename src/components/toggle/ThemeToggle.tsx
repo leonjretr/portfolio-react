@@ -4,7 +4,6 @@ import {LuSunMedium} from "react-icons/lu";
 import {IoMoonOutline} from "react-icons/io5";
 
 const ThemeToggle = () => {
-    // const [checked, setChecked] = useState(false);
     const [theme, setTheme] = useState<'light' | 'dark'>("light");
 
     useEffect(() => {
@@ -18,7 +17,6 @@ const ThemeToggle = () => {
     }, [theme]);
 
     const toggleTheme = () => {
-        // setChecked(!checked);
         setTheme(theme === 'light' ? 'dark' : 'light');
         console.log(theme);
     };
@@ -36,7 +34,7 @@ const ThemeToggle = () => {
                             <motion.div
                                 className="relative w-7 h-7 border-2 border-gray-500 bg-gray-700 rounded-full"
                                 layout
-                                animate={{x: 26.5}} transition={{
+                                animate={{x: 27}} transition={{
                                 type: "spring",
                                 stiffness: 700,
                                 damping: 30
@@ -44,7 +42,6 @@ const ThemeToggle = () => {
                                 <div className={"m-0.3"}><IoMoonOutline className={"text-white text-lg"}/></div>
                             </motion.div>
                         </div>
-                        {/*<span className="ms-2 text-base font-medium font-poppinsFont text-black">🌞</span>*/}
                     </div>
                 ) : (
                     <div className={"flex items-center"}>
@@ -60,10 +57,8 @@ const ThemeToggle = () => {
                                     className={"text-blue-500 text-lg text-center"}/></div>
                             </motion.div>
                         </div>
-                        {/*<span className="ms-2 text-base font-medium font-poppinsFont text-black">🌙</span>*/}
                     </div>
                 )}
-
             </label>
         </div>
     );
