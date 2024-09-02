@@ -34,9 +34,9 @@ const AboutText = () => {
                 3D modelling
             </div>
         </Popover> in 3dsMax. Moreover, I have tried many programming languages such as <span
-            className={"text-green-500 font-semibold dark:text-cyan-500"}>Python, C++, C#, JavaScript and even Visual Basic. </span>
+            className={"text-green-600 font-semibold dark:text-cyan-500"}>Python, C++, C#, JavaScript and even Visual Basic. </span>
             For the past 6 months, I’ve been focusing on React and web development,
-            and my primary goal is a <span className={"text-green-500 font-semibold dark:text-cyan-500"}>React developer role</span> on
+            and my primary goal is a <span className={"text-green-600 font-semibold dark:text-cyan-500"}>React developer role</span> on
             an interesting and challenging project.
 
         </div>
