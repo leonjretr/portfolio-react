@@ -21,7 +21,7 @@ const AboutText = () => {
             img={project3D}
             linkToWiki={"https://www.google.com/search?q=3dsMax"}
             title={"My experience"}
-            description={"I did game dev for 2 years and 3D modelling for 1.5 years. Here's one of my renders!"}>
+            description={"I did game dev for 2 years and 3D modelling for 1.5 years."}>
             <div className={"underline text-sm md:text-base lg:text-lg hover:no-underline text-blue-600"}>
                 game development
             </div>
@@ -29,7 +29,7 @@ const AboutText = () => {
             img={project3D}
             linkToWiki={"https://www.google.com/search?q=3dsMax"}
             title={"My experience"}
-            description={"I did game dev for 2 years and 3D modelling for 1.5 years"}>
+            description={"I did game dev for 2 years and 3D modelling for 1.5 years."}>
             <div className={"underline text-sm md:text-base lg:text-lg hover:no-underline text-blue-600"}>
                 3D modelling
             </div>
