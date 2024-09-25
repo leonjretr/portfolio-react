@@ -1,5 +1,5 @@
 # Portfolio
-To view the website, go to: https://portfolio-react-alpha-two.vercel.app/
+To view the website, go to: https://leonsv.com/
 
 I'm fourth year student at __Simon Kuznets Kharkiv National University of Economics__, pursuing a bachelor degree in __Computer Science__. 
 Due to war outbreak, I had to flee abroad and now __I’m residing in the UK__. Parallely with my university studies, __I have obtained an OCR Level 3 Cambridge Technical Foundation Diploma in Software Development__ at college. I have always been interested in technology and have tried many various areas such as
