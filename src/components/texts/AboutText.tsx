@@ -29,11 +29,11 @@ const AboutText = () => {
             img={project3D}
             linkToWiki={"https://www.google.com/search?q=3dsMax"}
             title={"My experience"}
-            description={"I did game dev for 2 years and 3D modelling for 1.5 years. Here's one of my renders!"}>
+            description={"I did game dev for 2 years and 3D modelling for 1.5 years"}>
             <div className={"underline text-sm md:text-base lg:text-lg hover:no-underline text-blue-600"}>
                 3D modelling
             </div>
-        </Popover> in 3dsMax. Moreover, I have tried many programming languages such as <span
+        </Popover> in 3dsMax. Moreover, I've tried many programming languages such as <span
             className={"text-green-600 font-semibold dark:text-cyan-500"}>Python, C++, C#, JavaScript and even Visual Basic. </span>
             For the past 6 months, I’ve been focusing on React and web development,
             and my primary goal is a <span className={"text-green-600 font-semibold dark:text-cyan-500"}>React developer role</span> on
