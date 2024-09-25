@@ -14,8 +14,8 @@ const SkillPlate:FC<SkillPlateProps> = ({skillTitle, color}) => {
             <div className={"flex w-auto p-1.5 h-8 items-center text-white text-lg bg-greenDark font-interFont font-extrabold rounded-l-lg"}>
             #
             </div>
-            <div className={"flex w-auto p-2 h-8 items-center justify-center text-base sm:text-lg font-interFont font-medium rounded-r-lg"}
-            style={{backgroundColor: color}}>
+            <div className={`flex w-auto ${color} p-2 h-8 items-center justify-center text-base sm:text-lg font-interFont font-medium rounded-r-lg`}
+            >
                 {skillTitle}
             </div>
         </motion.div>
