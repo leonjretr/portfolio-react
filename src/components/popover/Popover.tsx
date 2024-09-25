@@ -13,38 +13,32 @@ const Popover: React.FC<PopoverProps> = ({children, title, description, linkToWi
 
     const [position, setPosition] = useState<'left' | 'right'>('right');
     const triggerRef = useRef<HTMLDivElement>(null);
+    const popoverWidth = 500; // Example width of your popover
 
     useEffect(() => {
         const calculatePosition = () => {
             if (triggerRef.current) {
                 const triggerRect = triggerRef.current.getBoundingClientRect();
+                const spaceOnLeft = triggerRect.left;
 
-                // Determine if the popover would go off-screen
-                if (window.innerWidth > 900) {
-                    if (triggerRect.left > 410) {
-                        setPosition('left');
-                    } else if(triggerRect.left < 410) {
-                        setPosition('right');
-                    }
-                }
-                if (window.innerWidth <= 900 && window.innerWidth >= 639) {
-                    if (triggerRect.left >= 370) {
-                        setPosition('left');
-                    } else if(triggerRect.left < 370) {
-                        setPosition('right');
-                    }
-                }
-                if (window.innerWidth < 639) {
-                    if (triggerRect.left >= 370) {
-                        setPosition('left');
-                    } else if(triggerRect.left < 370) {
-                        setPosition('right');
-                    }
+                if (spaceOnLeft > popoverWidth) {
+                    setPosition('left');
+                } else {
+                    setPosition('right');
                 }
             }
         };
         calculatePosition();
-    }, [position]);
+
+        const handleResize = () => {
+            calculatePosition();
+        };
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
     return (
         <div className="relative inline-block">
             <div ref={triggerRef}
@@ -58,7 +52,7 @@ const Popover: React.FC<PopoverProps> = ({children, title, description, linkToWi
                 <div
                     onMouseEnter={() => setIsVisible(true)}
                     onMouseLeave={() => setIsVisible(false)}
-                    className={`absolute ${position === "left" && "bottom-full sm:right-5"} ${position === "right" && "sm:left-2 bottom-full"} z-10 w-32 sm:w-80 lg:w-96 h-auto text-sm text-white bg-white rounded-md shadow-lg`}
+                    className={`absolute ${position === "left" && "sm:right-5 bottom-full"} ${position === "right" && "sm:left-5 bottom-full"} z-10 w-32 sm:w-80 lg:w-96 h-auto text-sm text-white bg-white rounded-md shadow-lg`}
                 >
                     <div className="flex justify-between h-auto items-center">
                         <div className="col-span-3 p-3">
