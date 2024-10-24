@@ -1,21 +1,21 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useLayoutEffect, useRef, useState} from 'react';
 
 interface PopoverProps {
     children: React.ReactNode;
     title: string;
     description: string;
     linkToWiki: string;
-    img: string;
+    img?: string;
 }
 
 const Popover: React.FC<PopoverProps> = ({children, title, description, linkToWiki, img}) => {
     const [isVisible, setIsVisible] = useState(false);
 
-    const [position, setPosition] = useState<'left' | 'right'>('right');
+    const [position, setPosition] = useState<'left' | 'right'>('left');
     const triggerRef = useRef<HTMLDivElement>(null);
-    const popoverWidth = 500; // Example width of your popover
+    const popoverWidth = 650;
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const calculatePosition = () => {
             if (triggerRef.current) {
                 const triggerRect = triggerRef.current.getBoundingClientRect();
@@ -28,7 +28,9 @@ const Popover: React.FC<PopoverProps> = ({children, title, description, linkToWi
                 }
             }
         };
-        calculatePosition();
+        setTimeout(() => {
+            calculatePosition();
+        }, 5);
 
         const handleResize = () => {
             calculatePosition();
@@ -38,7 +40,7 @@ const Popover: React.FC<PopoverProps> = ({children, title, description, linkToWi
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, []);
+    }, [triggerRef]);
     return (
         <div className="relative inline-block">
             <div ref={triggerRef}
