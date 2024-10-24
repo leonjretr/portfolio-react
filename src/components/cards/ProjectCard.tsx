@@ -79,7 +79,6 @@ const ProjectCard: FC<ProjectCardProps> = ({title, description, deepDescription,
                         </div>
                     </div>
                 </ModalProjectCard>
-
             </div>
         </div>
 
