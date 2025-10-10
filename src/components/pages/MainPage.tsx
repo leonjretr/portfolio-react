@@ -20,14 +20,14 @@ const MainPage = observer(() => {
 
                 <HorizontalDivider/>
 
-                <div className={"scroll-smooth"} id={"about"}>
-                    <AboutSection/>
+                <div className={"scroll-smooth"} id={"projects"}>
+                    <ProjectSection/>
                 </div>
 
                 <HorizontalDivider/>
 
-                <div className={"scroll-smooth"} id={"projects"}>
-                    <ProjectSection/>
+                <div className={"scroll-smooth"} id={"about"}>
+                    <AboutSection/>
                 </div>
 
                 <HorizontalDivider/>

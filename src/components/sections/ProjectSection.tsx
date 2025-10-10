@@ -1,4 +1,4 @@
-import ProjectCard from "../cards/ProjectCard.tsx";
+ import ProjectCard from "../cards/ProjectCard.tsx";
 import ProjectsCarousel from "../carousel/ProjectsCarousel.tsx";
 import {projectCards} from "../../config/projectCards.ts";
 
@@ -6,16 +6,16 @@ const ProjectSection = () => {
     return (
         <div className={"flex flex-col dark:text-white"}>
             <h1 className={"font-interFont text-3xl md:text-5xl font-bold text-center mb-5 md:mb-10"}>Projects</h1>
-            <div className={"hidden sm:flex justify-center gap-x-2 md:gap-x-6"}>
-                {projectCards.map((projectCard, index) => (
-                    <ProjectCard key={index}
-                                 title={projectCard.title} description={projectCard.description}
-                                 deepDescription={projectCard.deepDescription}
-                                 internalTitle={projectCard.internalTitle}
-                                 image={projectCard.image}/>
-                ))}
-            </div>
-            <div className={"flex justify-center sm:hidden"}>
+            {/*<div className={"hidden sm:flex justify-center gap-x-2 md:gap-x-6"}>*/}
+            {/*    {projectCards.map((projectCard, index) => (*/}
+            {/*        <ProjectCard key={index}*/}
+            {/*                     title={projectCard.title} description={projectCard.description}*/}
+            {/*                     deepDescription={projectCard.deepDescription}*/}
+            {/*                     internalTitle={projectCard.internalTitle}*/}
+            {/*                     image={projectCard.image}/>*/}
+            {/*    ))}*/}
+            {/*</div>*/}
+            <div className={"flex justify-center"}>
                 <ProjectsCarousel/>
             </div>
         </div>

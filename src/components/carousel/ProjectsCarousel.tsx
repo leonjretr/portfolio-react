@@ -9,6 +9,7 @@ const MultiCardCarousel: React.FC = () => {
 
     const projImg1 = new URL("/imgs/portfolio1.png", import.meta.url).href;
     const projImg2 = new URL("/imgs/traffix2.png", import.meta.url).href;
+    const projImg3 = new URL("/imgs/inktells.png", import.meta.url).href;
 
     const projects = [
         <ProjectCard key={1}
@@ -25,7 +26,17 @@ const MultiCardCarousel: React.FC = () => {
                          " which became my second pet project, though at first it meant to be commercial." +
                          " It was made by my friend and me, I was responsible for front-end part."}
                      internalTitle={"Revolutionary web app"}
-                     image={projImg2}/>
+                     image={projImg2}
+        />,
+        <ProjectCard key={3}
+                     title={"Inktells"}
+                     internalTitle={"Inktells - place that connects"}
+                     description={"Inktells - a special place for readers to connect and share their hobby"}
+                     deepDescription={"Inktells is website that allows readers all around the world to " +
+                         "share their passion for books and stories. It enables any person to register and " +
+                         "publish their own story on the website and spread the useful habit of reading."}
+                     image={projImg3}
+        />,
     ];
 
     const handleNext = () => {
@@ -67,7 +78,7 @@ const MultiCardCarousel: React.FC = () => {
                             initial={"enter"}
                             animate={"animate"}
                             exit={"exit"}
-                            transition={{ type: "spring", stiffness: 300, damping: 30, duration: 0.5 }}>
+                            transition={{type: "spring", stiffness: 300, damping: 30, duration: 0.5}}>
                     {projects[currentIndex]}
                 </motion.div>
             </AnimatePresence>
