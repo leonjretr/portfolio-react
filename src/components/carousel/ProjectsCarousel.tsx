@@ -85,7 +85,7 @@ const MultiCardCarousel: React.FC = () => {
                             transition={{type: "spring", stiffness: 300, damping: 30, duration: 0.5}}
                             className="flex gap-x-10">
                     {projects[currentIndex]}
-                    <div className={"hidden mob2:flex mob3:flex"}> {currentIndex >= 2 ? projects[0] : projects[currentIndex + 1]} </div>
+                    <div className={"hidden mob3:flex"}> {currentIndex >= 2 ? projects[0] : projects[currentIndex + 1]} </div>
                 </motion.div>
             </AnimatePresence>
             <motion.button
