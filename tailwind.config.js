@@ -37,7 +37,8 @@ export default {
             screens: {
                 'mob1': '385px',
                 'mob2': '450px',
-                'mob3': '540px'
+                'mob3': '540px',
+                'mob4': '640px',
             },
             fontSize: {
                 xxs: "0.5rem"
