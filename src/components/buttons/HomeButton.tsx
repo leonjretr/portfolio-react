@@ -6,7 +6,7 @@ const HomeButton = () => {
     return (
         <motion.button whileHover={{scale: 1.15}}
                        whileTap={{scale: 0.9}}
-                       className="font-poppinsFont text-2xl font-medium m-4"
+                       className="font-poppinsFont text-2xl font-medium m-4 animate-pulse"
                        onClick={() => nav("home")}
         >
             LEO SV.

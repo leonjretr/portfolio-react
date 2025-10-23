@@ -14,8 +14,8 @@ const TextAnimation: FC<TextAnimationProps> = ({classname, text}) => {
                     initial={{opacity: 0}}
                     animate={{opacity: 1}}
                     transition={{
-                        duration: 0.35,
-                        delay: i / 7,
+                        duration: 1.1,
+                        delay: i / 4,
                     }}
                     key={i}
                 >

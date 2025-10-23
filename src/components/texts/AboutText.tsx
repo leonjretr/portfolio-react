@@ -17,19 +17,11 @@ const AboutText = () => {
         </Popover>, pursuing a bachelor degree in Computer Science. Due to war outbreak, I had to flee abroad and now
             I’m residing in the UK.
             I have always been interested in technology
-            and have tried many various areas such as <Popover
+            and have tried many various areas such as game development on Unity and <Popover
             img={project3D}
             linkToWiki={"https://www.google.com/search?q=3dsMax"}
             title={"My experience"}
-            description={"I did game dev for 2 years and 3D modelling for 1.5 years."}>
-            <div className={"underline text-sm md:text-base lg:text-lg hover:no-underline text-blue-600"}>
-                game development
-            </div>
-        </Popover> on Unity and <Popover
-            img={project3D}
-            linkToWiki={"https://www.google.com/search?q=3dsMax"}
-            title={"My experience"}
-            description={"I did game dev for 2 years and 3D modelling for 1.5 years."}>
+            description={`I did game dev for 2 years and 3D modelling for 1.5 years. Follow the link below:`}>
             <div className={"underline text-sm md:text-base lg:text-lg hover:no-underline text-blue-600"}>
                 3D modelling
             </div>
@@ -38,7 +30,6 @@ const AboutText = () => {
             For the past 6 months, I’ve been focusing on React and web development,
             and my primary goal is a <span className={"text-green-600 font-semibold dark:text-cyan-500"}>React developer role</span> on
             an interesting and challenging project.
-
         </div>
     );
 };

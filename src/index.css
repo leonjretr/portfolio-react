@@ -7,3 +7,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes marquee-loop {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+@keyframes marquee-loop-reverse {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(50%);
+    }
+}
+
+.animate-marquee-loop {
+    animation: marquee-loop linear infinite ;
+}
+.animate-marquee-loop-reverse {
+    animation: marquee-loop-reverse linear infinite ;
+}

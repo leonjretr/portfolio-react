@@ -15,6 +15,7 @@
     "framer-motion": "^11.3.28",
     "mobx": "^6.13.1",
     "mobx-react-lite": "^4.0.7",
+    "popmotion": "^11.0.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-headroom": "^3.2.1",

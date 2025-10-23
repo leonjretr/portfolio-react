@@ -9,12 +9,15 @@ const MultiCardCarousel: React.FC = () => {
 
     const projImg1 = new URL("/imgs/portfolio1.png", import.meta.url).href;
     const projImg2 = new URL("/imgs/traffix2.png", import.meta.url).href;
+    const projImg3 = new URL("/imgs/inktells.png", import.meta.url).href;
 
     const projects = [
         <ProjectCard key={1}
                      title={"Portfolio website"}
                      description={"My personal landing page to showcase my skills and experience"}
-                     deepDescription={"Personal landing page was my first pet project ever."}
+                     deepDescription={"Personal landing page was my first pet project ever!😱 I tried to incorporate " +
+                         "maximum amount of features that I'd learnt in order to showcase my skills and experience🔥🤓 " +
+                         "Popups, animations, terminal(which I find quaint and extraordinary) and much-much more!"}
                      internalTitle={"Personal landing page"}
                      image={projImg1}
         />,
@@ -25,13 +28,24 @@ const MultiCardCarousel: React.FC = () => {
                          " which became my second pet project, though at first it meant to be commercial." +
                          " It was made by my friend and me, I was responsible for front-end part."}
                      internalTitle={"Revolutionary web app"}
-                     image={projImg2}/>
+                     image={projImg2}
+        />,
+        <ProjectCard key={3}
+                     title={"Inktells"}
+                     internalTitle={"Inktells - place that connects"}
+                     description={"Inktells - a special place for readers to connect and share their hobby"}
+                     deepDescription={"Inktells is website that allows readers all around the world to " +
+                         "share their passion for books and stories. It enables any person to register and " +
+                         "publish their own story on the website and spread the useful habit of reading."}
+                     image={projImg3}
+        />,
     ];
 
     const handleNext = () => {
         setDirection(1);
         setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
     };
+
 
     const handlePrev = () => {
         setDirection(-1);
@@ -59,7 +73,8 @@ const MultiCardCarousel: React.FC = () => {
             <motion.button
                 whileTap={{scale: 0.85}}
                 className="rounded-full"
-                onClick={handlePrev}><IoArrowBackCircleOutline className={"text-3xl"}/></motion.button>
+                onClick={handlePrev}><IoArrowBackCircleOutline className={"text-3xl mob2:text-4xl mob3:text-5xl"}/>
+            </motion.button>
             <AnimatePresence mode="wait">
                 <motion.div key={currentIndex}
                             custom={direction}
@@ -67,13 +82,16 @@ const MultiCardCarousel: React.FC = () => {
                             initial={"enter"}
                             animate={"animate"}
                             exit={"exit"}
-                            transition={{ type: "spring", stiffness: 300, damping: 30, duration: 0.5 }}>
+                            transition={{type: "spring", stiffness: 300, damping: 30, duration: 0.5}}
+                            className="flex gap-x-10">
                     {projects[currentIndex]}
+                    {currentIndex >= 2 ? projects[0] : projects[currentIndex + 1]}
                 </motion.div>
             </AnimatePresence>
             <motion.button
                 whileTap={{scale: 0.85}}
-                className="rounded-full" onClick={handleNext}><IoArrowForwardCircleOutline className={"text-3xl"}/>
+                className="rounded-full" onClick={handleNext}><IoArrowForwardCircleOutline
+                className={"text-3xl mob2:text-4xl mob3:text-5xl"}/>
             </motion.button>
         </div>
     );
