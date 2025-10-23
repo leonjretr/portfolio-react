@@ -15,7 +15,9 @@ const MultiCardCarousel: React.FC = () => {
         <ProjectCard key={1}
                      title={"Portfolio website"}
                      description={"My personal landing page to showcase my skills and experience"}
-                     deepDescription={"Personal landing page was my first pet project ever."}
+                     deepDescription={"Personal landing page was my first pet project ever!😱 I tried to incorporate " +
+                         "maximum amount of features that I'd learnt in order to showcase my skills and experience🔥🤓 " +
+                         "Popups, animations, terminal(which I find quaint and extraordinary) and much-much more!"}
                      internalTitle={"Personal landing page"}
                      image={projImg1}
         />,
@@ -44,6 +46,7 @@ const MultiCardCarousel: React.FC = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
     };
 
+
     const handlePrev = () => {
         setDirection(-1);
         setCurrentIndex((prevIndex) => (prevIndex - 1 + projects.length) % projects.length);
@@ -70,7 +73,8 @@ const MultiCardCarousel: React.FC = () => {
             <motion.button
                 whileTap={{scale: 0.85}}
                 className="rounded-full"
-                onClick={handlePrev}><IoArrowBackCircleOutline className={"text-3xl"}/></motion.button>
+                onClick={handlePrev}><IoArrowBackCircleOutline className={"text-3xl mob2:text-4xl mob3:text-5xl"}/>
+            </motion.button>
             <AnimatePresence mode="wait">
                 <motion.div key={currentIndex}
                             custom={direction}
@@ -78,13 +82,16 @@ const MultiCardCarousel: React.FC = () => {
                             initial={"enter"}
                             animate={"animate"}
                             exit={"exit"}
-                            transition={{type: "spring", stiffness: 300, damping: 30, duration: 0.5}}>
+                            transition={{type: "spring", stiffness: 300, damping: 30, duration: 0.5}}
+                            className="flex gap-x-10">
                     {projects[currentIndex]}
+                    {currentIndex >= 2 ? projects[0] : projects[currentIndex + 1]}
                 </motion.div>
             </AnimatePresence>
             <motion.button
                 whileTap={{scale: 0.85}}
-                className="rounded-full" onClick={handleNext}><IoArrowForwardCircleOutline className={"text-3xl"}/>
+                className="rounded-full" onClick={handleNext}><IoArrowForwardCircleOutline
+                className={"text-3xl mob2:text-4xl mob3:text-5xl"}/>
             </motion.button>
         </div>
     );

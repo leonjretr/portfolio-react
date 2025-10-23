@@ -12,8 +12,8 @@ const SocialLinkButton: FC<SocialLinkButtonProps> = ({icon, link}) => {
            href={link}
            target="_blank">
             <motion.button className={"text-4xl mx-1.5"}
-                           whileHover={{scale: 1.1}}
-                           whileTap={{scale: 0.9}}>{icon}
+                           whileHover={{scale: 1.2}}
+                           whileTap={{scale: 0.85}}>{icon}
             </motion.button>
         </a>
     );

@@ -1,6 +1,6 @@
- import ProjectCard from "../cards/ProjectCard.tsx";
+ // import ProjectCard from "../cards/ProjectCard.tsx";
 import ProjectsCarousel from "../carousel/ProjectsCarousel.tsx";
-import {projectCards} from "../../config/projectCards.ts";
+// import {projectCards} from "../../config/projectCards.ts";
 
 const ProjectSection = () => {
     return (

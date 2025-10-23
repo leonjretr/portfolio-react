@@ -4,7 +4,7 @@ import {LuSunMedium} from "react-icons/lu";
 import {IoMoonOutline} from "react-icons/io5";
 
 const ThemeToggle = () => {
-    const [theme, setTheme] = useState<'light' | 'dark'>("light");
+    const [theme, setTheme] = useState<'light' | 'dark'>("dark");
 
     useEffect(() => {
         if (theme === 'dark') {

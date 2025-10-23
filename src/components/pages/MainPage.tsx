@@ -11,7 +11,8 @@ import Toast from "../toasts/Toast.tsx";
 
 const MainPage = observer(() => {
     return (
-        <div className={"min-h-screen bg-white dark:bg-bgDarkColor scroll-smooth"}>
+        <div className={"min-h-screen bg-white dark:bg-bgDarkColor scroll-smooth " +
+            "relative before:absolute before:top-0 before:left-0 before:w-full before:h-full before:content-[''] before:opacity-[0.03] before:z-10 before:pointer-events-none before:bg-[url('https://www.ui-layouts.com/noise.gif')]"}>
             <PageWrapper>
                 <div id={"home"}>
                     <IntroductionSection/>
