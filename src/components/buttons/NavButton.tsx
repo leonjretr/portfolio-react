@@ -17,7 +17,6 @@ const NavButton: FC<NavButtonProps> = ({text, sectionLink}) => {
                        onClick={() => nav(sectionLink)}
                        style={{filter: "blur(.0px)"}}>{text}
         </motion.button>
-
     )
         ;
 };
