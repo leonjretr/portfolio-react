@@ -1,22 +1,22 @@
-import {useEffect, useState} from "react";
+import {useState, useEffect} from "react";
 import {motion, AnimatePresence} from "framer-motion";
 
 const MosaicGallery = () => {
     const images = [
-        "/imgs/carinterior.jpg",
-        "/imgs/turkey.jpg",
-        "/imgs/bench.jpg",
-        "/imgs/3dproject.jpg",
-        "/imgs/carme.jpg",
-        "/imgs/cemetery.jpg",
-        "/imgs/tree.jpg",
-        "/imgs/tunnelvenice.jpg",
-        "/imgs/house.jpg",
-        "/imgs/chatsworth.jpg",
-        "/imgs/street.jpg",
-        "/imgs/retrome.jpg",
-        "/imgs/krakow.jpg",
-        "/imgs/me22.JPG",
+        "/imgs/carinterior.webp",
+        "/imgs/turkey.webp",
+        "/imgs/bench.webp",
+        "/imgs/3dproject.webp",
+        "/imgs/carme.webp",
+        "/imgs/cemetery.webp",
+        "/imgs/tree.webp",
+        "/imgs/tunnelvenice.webp",
+        "/imgs/house.webp",
+        "/imgs/chatsworth.webp",
+        "/imgs/street.webp",
+        "/imgs/retrome.webp",
+        "/imgs/krakow.webp",
+        "/imgs/me22.webp",
     ];
 
     const layout = [
@@ -57,22 +57,22 @@ const MosaicGallery = () => {
     return (
         <div className="relative">
             <motion.div
-                        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[100px] p-4">
-                {images.map((src, i) => (
+                className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[100px] p-4">
+                {images.map((src, i) => !selectedImg || src !== selectedImg ? (
                     <motion.button
                         key={i}
                         whileHover={{scale: 1.05}}
                         layoutId={src} // link this card to the modal
                         onClick={() => setSelectedImg(src)}
-                        className={`overflow-visible rounded-lg ${layout[i % layout.length]} blur-sm hover:blur-none ease-out duration-200`}
+                        className={`overflow-visible rounded-lg ${layout[i % layout.length]} `}
                     >
                         <img
                             src={src}
                             alt=""
-                            className="rounded-lg w-full h-full object-cover"
+                            className="rounded-lg w-full h-full object-cover blur-sm hover:blur-none duration-200 ease-out"
                         />
                     </motion.button>
-                ))}
+                ) : null)}
             </motion.div>
 
             {/* Modal */}
@@ -80,18 +80,21 @@ const MosaicGallery = () => {
                 {selectedImg && (
                     <>
                         <motion.div
-                            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40"
+                            layout
+                            initial={{opacity: 0}}
+                            animate={{opacity: 1}}
+                            exit={{opacity: 0}}
+                            transition={{duration: 0.35, ease: "easeInOut"}}
+                            className="fixed inset-0 bg-black/70 z-40"
                             onClick={() => setSelectedImg(null)}
                         />
                         <div className="fixed inset-0 z-50 flex items-center justify-center">
                             <motion.div
+                                layout
                                 layoutId={selectedImg}
-                                className="relative rounded-lg overflow-hidden cursor-pointer will-change-transform pb-10 bg-neutral-900 "
+                                className="relative rounded-lg overflow-hidden cursor-pointer will-change-transform bg-neutral-900 "
                                 onClick={() => setSelectedImg(null)}
-                                initial={{ scale: 0.8, opacity: 0 }}
-                                animate={{ scale: 1, opacity: 1 }}
-                                exit={{ scale: 0.8, opacity: 0 }}
-                                transition={{ duration: 0.4, ease: "easeInOut" }}
+                                transition={{duration: 0.35, ease: "easeInOut"}}
                             >
                                 <motion.img
                                     src={selectedImg}
