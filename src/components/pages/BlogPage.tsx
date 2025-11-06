@@ -5,8 +5,9 @@ const BlogPage = () => {
     return (
         <div className={"min-h-screen bg-white dark:bg-bgDarkColor scroll-smooth"}>
             <PageWrapper>
-                <div className={"flex justify-center text-4xl font-bold font-interFont dark:text-white m-5"}>
-                    Every image has its story✨
+                <div className={"flex flex-col items-center justify-center text-3xl font-bold font-interFont dark:text-white m-5"}>
+                    Im
+                    {/*<p> they may not be great, but I feel that they reflect my thought, my vision and myself. </p>*/}
                 </div>
                 <MosaicGallery/>
             </PageWrapper>

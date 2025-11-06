@@ -6,7 +6,7 @@ const MosaicGallery = () => {
         "/imgs/carinterior.webp",
         "/imgs/turkey.webp",
         "/imgs/bench.webp",
-        "/imgs/3dproject.webp",
+        "/imgs/3dproject.jpg",
         "/imgs/carme.webp",
         "/imgs/cemetery.webp",
         "/imgs/tree.webp",
@@ -37,12 +37,14 @@ const MosaicGallery = () => {
     ];
 
     const [selectedImg, setSelectedImg] = useState<string | null>(null);
+    const [descriptionOpen, setDescriptionOpen] = useState(true);
 
     useEffect(() => {
         if (selectedImg) {
             document.body.classList.add('overflow-hidden');
         } else {
             document.body.classList.remove('overflow-hidden');
+            setDescriptionOpen(true);
         }
     }, [selectedImg]);
 
@@ -67,9 +69,10 @@ const MosaicGallery = () => {
                         className={`overflow-visible rounded-lg ${layout[i % layout.length]} `}
                     >
                         <img
+                            loading={"lazy"}
                             src={src}
                             alt=""
-                            className="rounded-lg w-full h-full object-cover blur-sm hover:blur-none duration-200 ease-out"
+                            className="rounded-lg w-full h-full object-cover"
                         />
                     </motion.button>
                 ) : null)}
@@ -92,16 +95,48 @@ const MosaicGallery = () => {
                             <motion.div
                                 layout
                                 layoutId={selectedImg}
-                                className="relative rounded-lg overflow-hidden cursor-pointer will-change-transform bg-neutral-900 "
-                                onClick={() => setSelectedImg(null)}
+                                className="relative rounded-lg overflow-hidden will-change-transform bg-neutral-900 "
+                                // onClick={() => setSelectedImg(null)}
                                 transition={{duration: 0.35, ease: "easeInOut"}}
                             >
+                                <motion.button
+
+                                    onClick={() => setDescriptionOpen(!descriptionOpen)}
+                                    whileHover={{scale: 1.1}}
+                                    whileTap={{scale: 0.95}}
+                                    className={"absolute top-10 left-10 rounded-md active:scale-95 text-white font-niceFontSec text-2xl"}>
+                                    My story
+                                </motion.button>
                                 <motion.img
                                     src={selectedImg}
                                     alt=""
-                                    className="max-w-[90vw] max-h-[80vh] object-contain rounded-lg"
+                                    className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg"
                                     transition={{duration: 0.2, ease: "easeInOut"}}
+
                                 />
+                                {descriptionOpen && (<AnimatePresence>
+                                    <motion.div className={"absolute bottom-0 left-0 right-0 bg-neutral-900 w-full p-5"}
+                                                layout
+                                                initial={{y: 80, opacity: 0}}
+                                                animate={{y: 0, opacity: 1}}
+                                                exit={{y: 40, opacity: 0}}
+                                                transition={{
+                                                    y: {duration: 0.35, ease: [0.22, 1, 0.36, 1]},
+                                                    opacity: {duration: 0.35, ease: "easeInOut"}
+                                                }}
+                                    >
+                                        <p className="text-sm uppercase tracking-wide text-gray-300">Travel</p>
+                                        <h2 className="text-xl font-semibold mb-2">
+                                            5 Inspiring Apps for Your Next Trip
+                                        </h2>
+                                        <p className="text-sm text-gray-400 leading-relaxed">
+                                            Love to travel? So do the makers of these five subscription apps. For a
+                                            small
+                                            monthly fee, they'll help you find the best deals on flights, hotels, and
+                                            more.
+                                        </p>
+                                    </motion.div>
+                                </AnimatePresence>)}
                             </motion.div>
                             <button
                                 aria-label="Close image"
