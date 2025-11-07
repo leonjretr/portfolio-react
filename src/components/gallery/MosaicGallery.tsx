@@ -59,7 +59,7 @@ const MosaicGallery = () => {
     return (
         <div className="relative">
             <motion.div
-                className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[100px] p-4">
+                className="grid grid-cols-1 mob1:grid-cols-2 mob2:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[100px] p-4">
                 {images.map((src, i) => !selectedImg || src !== selectedImg ? (
                     <motion.button
                         key={i}
@@ -129,7 +129,7 @@ const MosaicGallery = () => {
                                         {/*<h2 className="text-xl font-semibold mb-2">*/}
                                         {/*    5 Inspiring Apps for Your Next Trip*/}
                                         {/*</h2>*/}
-                                        <p className="text-sm text-gray-400 leading-relaxed font-interFont font-semibold">
+                                        <p className="text-sm text-gray-400 leading-relaxed font-interFont font-medium">
                                             Love to travel? So do the makers of these five subscription apps. For a
                                             small
                                             monthly fee, they'll help you find the best deals on flights, hotels, and
