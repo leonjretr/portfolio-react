@@ -102,10 +102,9 @@ const MosaicGallery = () => {
                                 <motion.button
 
                                     onClick={() => setDescriptionOpen(!descriptionOpen)}
-                                    whileHover={{scale: 1.1}}
                                     whileTap={{scale: 0.95}}
-                                    className={"absolute top-10 left-10 rounded-md active:scale-95 text-white font-niceFontSec text-2xl"}>
-                                    My story
+                                    className={"absolute top-10 left-5 rounded-md active:scale-95 text-white hover:brightness-150 font-interFont font-extrabold text-2xl"}>
+                                    Turkey: Hidden Gem
                                 </motion.button>
                                 <motion.img
                                     src={selectedImg}
@@ -114,29 +113,33 @@ const MosaicGallery = () => {
                                     transition={{duration: 0.2, ease: "easeInOut"}}
 
                                 />
-                                {descriptionOpen && (<AnimatePresence>
-                                    <motion.div className={"absolute bottom-0 left-0 right-0 bg-neutral-900 w-full p-5"}
-                                                layout
-                                                initial={{y: 80, opacity: 0}}
-                                                animate={{y: 0, opacity: 1}}
-                                                exit={{y: 40, opacity: 0}}
-                                                transition={{
-                                                    y: {duration: 0.35, ease: [0.22, 1, 0.36, 1]},
-                                                    opacity: {duration: 0.35, ease: "easeInOut"}
-                                                }}
+                                <AnimatePresence>
+                                    {descriptionOpen && (<motion.div
+                                        className={"absolute bottom-0 left-0 right-0 bg-neutral-900 w-full p-5"}
+                                        layout
+                                        initial={{y: 80, }}
+                                        animate={{y: 0}}
+                                        exit={{ y: 200 }}
+                                        transition={{
+                                            y: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+                                            opacity: { duration: 0.55, ease: "easeInOut", delay: 0.05 }
+                                        }}
                                     >
-                                        <p className="text-sm uppercase tracking-wide text-gray-300">Travel</p>
-                                        <h2 className="text-xl font-semibold mb-2">
-                                            5 Inspiring Apps for Your Next Trip
-                                        </h2>
-                                        <p className="text-sm text-gray-400 leading-relaxed">
+                                        {/*<p className="text-sm uppercase tracking-wide text-gray-300">Travel</p>*/}
+                                        {/*<h2 className="text-xl font-semibold mb-2">*/}
+                                        {/*    5 Inspiring Apps for Your Next Trip*/}
+                                        {/*</h2>*/}
+                                        <p className="text-sm text-gray-400 leading-relaxed font-interFont font-semibold">
                                             Love to travel? So do the makers of these five subscription apps. For a
+                                            small
+                                            monthly fee, they'll help you find the best deals on flights, hotels, and
+                                            more. Love to travel? So do the makers of these five subscription apps. For a
                                             small
                                             monthly fee, they'll help you find the best deals on flights, hotels, and
                                             more.
                                         </p>
-                                    </motion.div>
-                                </AnimatePresence>)}
+                                    </motion.div>)}
+                                </AnimatePresence>
                             </motion.div>
                             <button
                                 aria-label="Close image"
