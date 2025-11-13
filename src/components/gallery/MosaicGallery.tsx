@@ -1,5 +1,6 @@
 import {useState, useEffect} from "react";
 import {motion, AnimatePresence} from "framer-motion";
+import {IoIosArrowDown} from "react-icons/io";
 
 const MosaicGallery = () => {
     const images = [
@@ -37,14 +38,14 @@ const MosaicGallery = () => {
     ];
 
     const [selectedImg, setSelectedImg] = useState<string | null>(null);
-    const [descriptionOpen, setDescriptionOpen] = useState(true);
+    const [descriptionOpen, setDescriptionOpen] = useState(false);
 
     useEffect(() => {
         if (selectedImg) {
             document.body.classList.add('overflow-hidden');
         } else {
             document.body.classList.remove('overflow-hidden');
-            setDescriptionOpen(true);
+            // setDescriptionOpen(true);
         }
     }, [selectedImg]);
 
@@ -91,6 +92,17 @@ const MosaicGallery = () => {
                             className="fixed inset-0 bg-black/70 z-40"
                             onClick={() => setSelectedImg(null)}
                         />
+                        <motion.button
+                            onClick={() => setDescriptionOpen(!descriptionOpen)}
+                            whileTap={{scale: 0.95}}
+                            className={"rounded-md active:scale-95 text-white hover:brightness-150 font-interFont font-extrabold text-2xl"}
+                            transition={{layout: {duration: 0.6, ease: [0.22, 1, 0.36, 1]}}}>
+                            <IoIosArrowDown
+                                className={`transition-transform duration-300 ${
+                                    descriptionOpen ? "rotate-180" : "rotate-0"
+                                }`}
+                            />
+                        </motion.button>
                         <div className="fixed inset-0 z-50 flex items-center justify-center">
                             <motion.div
                                 layout
@@ -99,13 +111,7 @@ const MosaicGallery = () => {
                                 // onClick={() => setSelectedImg(null)}
                                 transition={{duration: 0.35, ease: "easeInOut"}}
                             >
-                                <motion.button
 
-                                    onClick={() => setDescriptionOpen(!descriptionOpen)}
-                                    whileTap={{scale: 0.95}}
-                                    className={"absolute top-10 left-5 rounded-md active:scale-95 text-white hover:brightness-150 font-interFont font-extrabold text-2xl"}>
-                                    Turkey: Hidden Gem
-                                </motion.button>
                                 <motion.img
                                     src={selectedImg}
                                     alt=""
@@ -117,26 +123,19 @@ const MosaicGallery = () => {
                                     {descriptionOpen && (<motion.div
                                         className={"absolute bottom-0 left-0 right-0 bg-neutral-900 w-full p-5"}
                                         layout
-                                        initial={{y: 80, }}
+                                        initial={{y: 80,}}
                                         animate={{y: 0}}
-                                        exit={{ y: 200 }}
+                                        exit={{y: 200}}
                                         transition={{
-                                            y: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-                                            opacity: { duration: 0.55, ease: "easeInOut", delay: 0.05 }
+                                            y: {duration: 0.6, ease: [0.22, 1, 0.36, 1]},
+                                            opacity: {duration: 0.55, ease: "easeInOut", delay: 0.05}
                                         }}
                                     >
-                                        {/*<p className="text-sm uppercase tracking-wide text-gray-300">Travel</p>*/}
-                                        {/*<h2 className="text-xl font-semibold mb-2">*/}
-                                        {/*    5 Inspiring Apps for Your Next Trip*/}
-                                        {/*</h2>*/}
                                         <p className="text-sm text-gray-400 leading-relaxed font-interFont font-medium">
-                                            Love to travel? So do the makers of these five subscription apps. For a
-                                            small
-                                            monthly fee, they'll help you find the best deals on flights, hotels, and
-                                            more. Love to travel? So do the makers of these five subscription apps. For a
-                                            small
-                                            monthly fee, they'll help you find the best deals on flights, hotels, and
-                                            more.
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra id tortor eget mattis.
+                                            Integer eu blandit ipsum, eu luctus nisl. Nullam eu ultrices leo, sit amet viverra nulla.
+                                            Praesent in consectetur tortor. Phasellus imperdiet tempor condimentum.
+                                            Curabitur nec venenatis mi, eu aliquam sem.
                                         </p>
                                     </motion.div>)}
                                 </AnimatePresence>
@@ -155,7 +154,8 @@ const MosaicGallery = () => {
                 )}
             </AnimatePresence>
         </div>
-    );
+    )
+        ;
 };
 
 export default MosaicGallery;

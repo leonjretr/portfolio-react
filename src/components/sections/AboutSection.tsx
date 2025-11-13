@@ -9,7 +9,7 @@ const AboutSection = () => {
                 <h1 className={"font-interFont text-3xl md:text-5xl font-bold text-center mb-3 md:mb-6"}>About me</h1>
                 <AboutText/>
             </div>
-            <div className={"flex justify-start gap-1 my-2 flex-wrap select-none mt-5"}>
+            <div className={"flex justify-start gap-2 my-2 flex-wrap select-none mt-5"}>
                 {skills.map((skill, index) => (
                     <SkillPlate key={index} skillTitle={skill.skillName} color={skill.color}/>
                 ))}

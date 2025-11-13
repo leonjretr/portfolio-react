@@ -6,18 +6,17 @@ const AboutText = () => {
 
     return (
         <div className={"text-justify font-poppinsFont text-sm md:text-base lg:text-lg font-medium dark:font-normal"}>
-            I'm fourth year student at Simon Kuznets <Popover
+            Howdy stranger! My name is Leonid, I’m a front-end developer and a Simon Kuznets Kharkiv National <Popover
             img={uni}
             linkToWiki={"https://www.google.com/search?q=Kharkiv+National+University+of+Economics"}
             title={"About university"}
             description={"KNUE is the largest economic higher educational and research institution in Eastern Ukraine. Follow the link below:"}>
             <span className={"underline text-sm md:text-base lg:text-lg hover:no-underline text-blue-600"}>
-                Kharkiv National University of Economics
+                 University of Economics
             </span>
-        </Popover>, pursuing a bachelor degree in Computer Science. Due to war outbreak, I had to flee abroad and now
-            I’m residing in the UK.
-            I have always been interested in technology
-            and have tried many various areas such as game development on Unity and <Popover
+        </Popover> graduate in Computer Science.
+            I have always been interested in technology and have tried many various areas
+            such as game development on Unity and <Popover
             img={project3D}
             linkToWiki={"https://www.google.com/search?q=3dsMax"}
             title={"My experience"}
@@ -29,7 +28,7 @@ const AboutText = () => {
             className={"text-green-600 font-semibold dark:text-cyan-500"}>Python, C++, C#, JavaScript and even Visual Basic. </span>
             For the past 6 months, I’ve been focusing on React and web development,
             and my primary goal is a <span className={"text-green-600 font-semibold dark:text-cyan-500"}>React developer role</span> on
-            an interesting and challenging project.
+            an interesting and challenging project that will allow me to grow and expand my professional horizons!
         </div>
     );
 };

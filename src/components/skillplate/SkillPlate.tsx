@@ -9,8 +9,8 @@ interface SkillPlateProps {
 const SkillPlate:FC<SkillPlateProps> = ({skillTitle, color}) => {
     return (
         <motion.div
-            whileHover={{scale:1.05}}
-            className={"flex items-center hover:drop-shadow-md hover:shadow-gray-400 rounded-lg"}>
+            whileHover={{scale:1.07}}
+            className={"flex items-center hover:shadow-md hover:shadow-gray-300  rounded-lg cursor-pointer"}>
             <div className={"flex w-auto p-1.5 h-8 items-center text-white text-lg bg-greenDark font-interFont font-extrabold rounded-l-lg"}>
             #
             </div>
