@@ -3,12 +3,12 @@ import {FC} from "react";
 import useScrollNavigate from "../scroll/useScrollNavigate.ts";
 import {Link} from "react-router-dom";
 
-interface NavButtonProps {
+interface NavRouteButtonProps {
     text: string;
     routeLink: string;
 }
 
-const NavButton: FC<NavButtonProps> = ({text, routeLink}) => {
+const NavRouteButton: FC<NavRouteButtonProps> = ({text, routeLink}) => {
     const nav = useScrollNavigate();
 
     return (
@@ -26,4 +26,4 @@ const NavButton: FC<NavButtonProps> = ({text, routeLink}) => {
         ;
 };
 
-export default NavButton;
+export default NavRouteButton;

@@ -92,17 +92,6 @@ const MosaicGallery = () => {
                             className="fixed inset-0 bg-black/70 z-40"
                             onClick={() => setSelectedImg(null)}
                         />
-                        <motion.button
-                            onClick={() => setDescriptionOpen(!descriptionOpen)}
-                            whileTap={{scale: 0.95}}
-                            className={"rounded-md active:scale-95 text-white hover:brightness-150 font-interFont font-extrabold text-2xl"}
-                            transition={{layout: {duration: 0.6, ease: [0.22, 1, 0.36, 1]}}}>
-                            <IoIosArrowDown
-                                className={`transition-transform duration-300 ${
-                                    descriptionOpen ? "rotate-180" : "rotate-0"
-                                }`}
-                            />
-                        </motion.button>
                         <div className="fixed inset-0 z-50 flex items-center justify-center">
                             <motion.div
                                 layout
@@ -139,16 +128,27 @@ const MosaicGallery = () => {
                                         </p>
                                     </motion.div>)}
                                 </AnimatePresence>
+                                <motion.button
+                                    onClick={() => setDescriptionOpen(!descriptionOpen)}
+                                    whileTap={{scale: 0.95}}
+                                    className={"absolute top-4 right-4 z-60 rounded-md active:scale-95 bg-black/50 text-white hover:bg-black/70 text-2xl p-3"}
+                                    transition={{layout: {duration: 0.6, ease: [0.22, 1, 0.36, 1]}}}>
+                                    <IoIosArrowDown
+                                        className={`transition-transform duration-300 ${
+                                            descriptionOpen ? "rotate-180" : "rotate-0"
+                                        }`}
+                                    />
+                                </motion.button>
                             </motion.div>
-                            <button
-                                aria-label="Close image"
-                                onClick={() => setSelectedImg(null)}
-                                className="absolute top-4 right-4 z-60 bg-black/40 text-white rounded-full p-2 hover:bg-black/60"
-                                style={{transform: "translate(0, 0)"}}
-                            >
-                                ✕
-                            </button>
-
+                            {/*<motion.button*/}
+                            {/*    aria-label="Close image"*/}
+                            {/*    onClick={() => setSelectedImg(null)}*/}
+                            {/*    className="absolute top-4 right-4 z-60 bg-black/60 text-white rounded-sm p-3 h-14 hover:bg-black/60 font-poppinsFont font-semibold hover:brightness-125"*/}
+                            {/*    style={{transform: "translate(0, 0)"}}*/}
+                            {/*    transition={{duration: 0.2, ease: "easeInOut"}}*/}
+                            {/*>*/}
+                            {/*    close*/}
+                            {/*</motion.button>*/}
                         </div>
                     </>
                 )}

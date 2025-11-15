@@ -6,7 +6,7 @@ const AboutText = () => {
     const leonidas = new URL("/imgs/Leonidas.webp", import.meta.url).href;
     return (
         <div className={"text-justify font-poppinsFont text-sm md:text-base lg:text-lg font-medium dark:font-normal"}>
-            Howdy stranger! My name is <Popover
+            Howdy stranger!🤠 My name is <Popover
             title={"Leonidas I"}
             description={"Leonidas was a Spartan king whose stand against the invading Persian army " +
                 "at the pass of Thermopylae" +
