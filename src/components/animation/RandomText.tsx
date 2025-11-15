@@ -1,6 +1,6 @@
 import {useEffect, useState, useCallback} from 'react';
 
-const lettersAndSymbols = 'abcdefghijklmnopqrstuvwxyz!@#$%^&*-_+=;:<>,';
+const lettersAndSymbols = 'abcdefghijklmnopqrstuvwxyz!%^&*-+=;:<>,';
 
 interface AnimatedTextProps {
     text: string;
