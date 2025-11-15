@@ -26,9 +26,9 @@ const AboutText = () => {
             title={"About university"}
             description={"KNUE is the largest economic higher educational and research institution in Eastern Ukraine. Follow the link below:"}>
             <span className={"underline text-sm md:text-base lg:text-lg hover:no-underline text-blue-600 cursor-pointer"}>
-                 University of Economics
+                 University
             </span>
-        </Popover> graduate in Computer Science.
+        </Popover> of Economics graduate in Computer Science.
             I have always been interested in technology and have tried many various areas
             such as game development on Unity and <Popover
             img={project3D}
