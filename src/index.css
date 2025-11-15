@@ -8,6 +8,25 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+    .noise-overlay {
+        position: relative;
+    }
+
+    .noise-overlay::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url('/public/imgs/noise.jpg');
+        background-repeat: repeat;
+        opacity: 0.03;
+        pointer-events: none;
+        z-index: 10;
+        animation: grain 1s steps(3) infinite;
+    }
+}
+
+
 @keyframes marquee-loop {
     0% {
         transform: translateX(0);
@@ -16,6 +35,7 @@
         transform: translateX(-50%);
     }
 }
+
 @keyframes marquee-loop-reverse {
     0% {
         transform: translateX(0);
@@ -26,8 +46,9 @@
 }
 
 .animate-marquee-loop {
-    animation: marquee-loop linear infinite ;
+    animation: marquee-loop linear infinite;
 }
+
 .animate-marquee-loop-reverse {
-    animation: marquee-loop-reverse linear infinite ;
+    animation: marquee-loop-reverse linear infinite;
 }

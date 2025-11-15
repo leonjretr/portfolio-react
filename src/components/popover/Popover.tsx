@@ -66,7 +66,7 @@ const Popover: React.FC<PopoverProps> = ({children, title, description, linkToWi
                                     more </a>
                             </div>
                         </div>
-                        <img src={img} className="w-2/4 h-3/4 rounded-lg p-1 hidden md:flex" alt="Popover Image"/>
+                        <img src={img} className="min-w-40 w-full h-full rounded-lg p-1 hidden md:flex" alt="Popover Image"/>
                     </div>
                 </div>
             )}
