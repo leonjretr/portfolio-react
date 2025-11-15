@@ -57,7 +57,7 @@ const MultiCardCarousel: React.FC = () => {
     const variants = {
         enter: (direction: number) => ({
             x: direction === 1 ? 100 : -100,
-            opacity: 0,
+            opacity: 0.5,
         }),
         animate: {
             x: 0,
@@ -65,7 +65,7 @@ const MultiCardCarousel: React.FC = () => {
         },
         exit: (direction: number) => ({
             x: direction === 1 ? -100 : 100,
-            opacity: 0,
+            opacity: 0.5,
         }),
     }
     return (
@@ -82,7 +82,7 @@ const MultiCardCarousel: React.FC = () => {
                             initial={"enter"}
                             animate={"animate"}
                             exit={"exit"}
-                            transition={{type: "spring", stiffness: 300, damping: 30, duration: 0.5}}
+                            transition={{type: "spring", stiffness: 1000, damping: 30, duration: 0.2}}
                             className="flex gap-x-10">
                     {projects[currentIndex]}
                     <div className={"hidden mob4:flex"}> {currentIndex >= 2 ? projects[0] : projects[currentIndex + 1]} </div>
