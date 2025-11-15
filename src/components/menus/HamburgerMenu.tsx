@@ -27,6 +27,7 @@ const HamburgerMenu = () => {
                 <HamburgerMenuButtons text={"home"} sectionLink={"home"}/>
                 <HamburgerMenuButtons text={"about"} sectionLink={"about"}/>
                 <HamburgerMenuButtons text={"projects"} sectionLink={"projects"}/>
+                <HamburgerMenuButtons text={"blog"} sectionLink={"/blog"}/>
                 <HamburgerMenuButtons text={"contact"} sectionLink={"contact"}/>
             </motion.div>
         </motion.div>

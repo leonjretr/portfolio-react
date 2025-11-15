@@ -8,12 +8,12 @@ class HamburgerStore {
         makeAutoObservable(this);
     }
 
-    // setIsOpenTrue = () => {
-    //     this.isOpen = true
-    // }
-    // setIsOpenFalse = () => {
-    //     this.isOpen = false
-    // }
+    setIsOpenTrue = () => {
+        this.isOpen = true
+    }
+    setIsOpenFalse = () => {
+        this.isOpen = false
+    }
 }
 
 export default new HamburgerStore();
