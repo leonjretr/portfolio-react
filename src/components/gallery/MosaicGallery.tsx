@@ -5,7 +5,7 @@ import {IoMdClose} from "react-icons/io";
 
 const MosaicGallery = () => {
     const images = [
-        "/imgs/carinterior.webp",
+        "/imgs/carinterior.webp?w=400&h=300",
         "/imgs/turkey.webp",
         "/imgs/bench.webp",
         "/imgs/3dproject.jpg",
@@ -103,9 +103,12 @@ const MosaicGallery = () => {
 
                                 <motion.img
                                     src={selectedImg}
+                                    srcSet={`${selectedImg} 600w, ${selectedImg} 1200w, ${selectedImg} 2000w`}
+                                    sizes="(max-width: 600px) 600px, (max-width: 1200px) 1200px, 2000px"
                                     alt=""
                                     className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg"
                                     transition={{duration: 0.2, ease: "easeInOut"}}
+                                    loading={"lazy"}
 
                                 />
                                 <AnimatePresence>
