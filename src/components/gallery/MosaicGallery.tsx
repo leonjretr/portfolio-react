@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react";
 import {motion, AnimatePresence} from "framer-motion";
 import {IoIosArrowDown} from "react-icons/io";
+import {IoMdClose} from "react-icons/io";
 
 const MosaicGallery = () => {
     const images = [
@@ -90,14 +91,13 @@ const MosaicGallery = () => {
                             exit={{opacity: 0}}
                             transition={{duration: 0.35, ease: "easeInOut"}}
                             className="fixed inset-0 bg-black/70 z-40"
-                            onClick={() => setSelectedImg(null)}
+                            // onClick={() => setSelectedImg(null)}
                         />
                         <div className="fixed inset-0 z-50 flex items-center justify-center">
                             <motion.div
                                 layout
                                 layoutId={selectedImg}
-                                className="relative rounded-lg overflow-hidden will-change-transform bg-neutral-900 "
-                                // onClick={() => setSelectedImg(null)}
+                                className="relative rounded-lg overflow-hidden will-change-transform bg-neutral-900"
                                 transition={{duration: 0.35, ease: "easeInOut"}}
                             >
 
@@ -121,8 +121,10 @@ const MosaicGallery = () => {
                                         }}
                                     >
                                         <p className="text-sm text-gray-400 leading-relaxed font-interFont font-medium">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra id tortor eget mattis.
-                                            Integer eu blandit ipsum, eu luctus nisl. Nullam eu ultrices leo, sit amet viverra nulla.
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra id
+                                            tortor eget mattis.
+                                            Integer eu blandit ipsum, eu luctus nisl. Nullam eu ultrices leo, sit amet
+                                            viverra nulla.
                                             Praesent in consectetur tortor. Phasellus imperdiet tempor condimentum.
                                             Curabitur nec venenatis mi, eu aliquam sem.
                                         </p>
@@ -131,13 +133,20 @@ const MosaicGallery = () => {
                                 <motion.button
                                     onClick={() => setDescriptionOpen(!descriptionOpen)}
                                     whileTap={{scale: 0.95}}
-                                    className={"absolute top-4 right-4 z-60 rounded-md active:scale-95 bg-black/50 text-white hover:bg-black/70 text-2xl p-3"}
+                                    className={"absolute top-4 right-4 z-60 rounded-md active:scale-95 bg-black/50 text-white hover:bg-black/70 text-xl mob2:text-2xl p-1 mob1:p-2 mob2:p-3"}
                                     transition={{layout: {duration: 0.6, ease: [0.22, 1, 0.36, 1]}}}>
                                     <IoIosArrowDown
                                         className={`transition-transform duration-300 ${
                                             descriptionOpen ? "rotate-180" : "rotate-0"
                                         }`}
                                     />
+                                </motion.button>
+                                <motion.button
+                                    onClick={() => setSelectedImg(null)}
+                                    whileTap={{scale: 0.95}}
+                                    className={"absolute top-4 left-4 z-60 rounded-md active:scale-95 bg-black/50 text-white hover:bg-black/70 text-xl mob2:text-2xl p-1 mob1:p-2 mob2:p-3"}
+                                    transition={{layout: {duration: 0.6, ease: [0.22, 1, 0.36, 1]}}}>
+                                    <IoMdClose/>
                                 </motion.button>
                             </motion.div>
                             {/*<motion.button*/}
