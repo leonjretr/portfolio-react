@@ -152,15 +152,6 @@ const MosaicGallery = () => {
                                     <IoMdClose/>
                                 </motion.button>
                             </motion.div>
-                            {/*<motion.button*/}
-                            {/*    aria-label="Close image"*/}
-                            {/*    onClick={() => setSelectedImg(null)}*/}
-                            {/*    className="absolute top-4 right-4 z-60 bg-black/60 text-white rounded-sm p-3 h-14 hover:bg-black/60 font-poppinsFont font-semibold hover:brightness-125"*/}
-                            {/*    style={{transform: "translate(0, 0)"}}*/}
-                            {/*    transition={{duration: 0.2, ease: "easeInOut"}}*/}
-                            {/*>*/}
-                            {/*    close*/}
-                            {/*</motion.button>*/}
                         </div>
                     </>
                 )}
