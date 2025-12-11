@@ -5,19 +5,19 @@ import {IoMdClose} from "react-icons/io";
 
 const MosaicGallery = () => {
     const images = [
-        "/imgs/carinterior.webp?w=400&h=300",
+        "/imgs/carinterior.jpg",
         "/imgs/turkey.webp",
-        "/imgs/bench.webp",
+        "/imgs/bench.jpg",
         "/imgs/3dproject.jpg",
-        "/imgs/carme.webp",
-        "/imgs/cemetery.webp",
-        "/imgs/tree.webp",
+        "/imgs/carme.jpg",
+        "/imgs/cemetery.jpg",
+        "/imgs/tree.jpg",
         "/imgs/tunnelvenice.webp",
-        "/imgs/house.webp",
-        "/imgs/chatsworth.webp",
-        "/imgs/street.webp",
+        "/imgs/house.jpg",
+        "/imgs/chatsworth.jpg",
+        "/imgs/street.jpg",
         "/imgs/retrome.webp",
-        "/imgs/krakow.webp",
+        "/imgs/krakow.jpg",
         "/imgs/me22.webp",
     ];
 
