@@ -5,11 +5,25 @@ import {IoMdClose} from "react-icons/io";
 
 const MosaicGallery = () => {
     const images = [
-        {img: "/imgs/carinterior.jpg", text: "..."},
+        {img: "/imgs/carinterior.jpg", text: "my stunning, charming car - first I ever bought and owned\n" +
+                "toyota starlet its name is,\n" +
+                "and more precious thing shall not exist\n" +
+                "i'll remember us forever\n" +
+                "the endeavour I put in you\n" +
+                "whatsoever life will place in the midst;\n" +
+                "midst of our bonded, broken parts\n" +
+                "that form a whole, bloodshot heart "},
         {img: "/imgs/turkey.webp", text: "..."},
         {img: "/imgs/bench.jpg", text: "..."},
         {img: "/imgs/3dproject.jpg", text: "My 3d Project"},
-        {img: "/imgs/carme.jpg", text: "..."},
+        {img: "/imgs/carme.jpg", text: "my stunning, charming car - first I ever bought and owned\n" +
+                "toyota starlet its name is,\n" +
+                "and more precious thing shall not exist\n" +
+                "i'll remember us forever\n" +
+                "the endeavour I put in you\n" +
+                "whatsoever life will place in the midst;\n" +
+                "midst of our bonded, broken parts\n" +
+                "that form a whole, bloodshot heart"},
         {img: "/imgs/cemetery.jpg", text: "..."},
         {img: "/imgs/tree.jpg", text: "..."},
         {img: "/imgs/tunnelvenice.webp", text: "..."},
