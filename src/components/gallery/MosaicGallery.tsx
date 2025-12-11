@@ -5,20 +5,20 @@ import {IoMdClose} from "react-icons/io";
 
 const MosaicGallery = () => {
     const images = [
-        "/imgs/carinterior.jpg",
-        "/imgs/turkey.webp",
-        "/imgs/bench.jpg",
-        "/imgs/3dproject.jpg",
-        "/imgs/carme.jpg",
-        "/imgs/cemetery.jpg",
-        "/imgs/tree.jpg",
-        "/imgs/tunnelvenice.webp",
-        "/imgs/house.jpg",
-        "/imgs/chatsworth.jpg",
-        "/imgs/street.jpg",
-        "/imgs/retrome.webp",
-        "/imgs/krakow.jpg",
-        "/imgs/me22.webp",
+        {img: "/imgs/carinterior.jpg", text: "..."},
+        {img: "/imgs/turkey.webp", text: "..."},
+        {img: "/imgs/bench.jpg", text: "..."},
+        {img: "/imgs/3dproject.jpg", text: "My 3d Project"},
+        {img: "/imgs/carme.jpg", text: "..."},
+        {img: "/imgs/cemetery.jpg", text: "..."},
+        {img: "/imgs/tree.jpg", text: "..."},
+        {img: "/imgs/tunnelvenice.webp", text: "..."},
+        {img: "/imgs/house.jpg", text: "..."},
+        {img: "/imgs/chatsworth.jpg", text: "..."},
+        {img: "/imgs/street.jpg", text: "..."},
+        {img: "/imgs/retrome.webp", text: "..."},
+        {img: "/imgs/krakow.jpg", text: "..."},
+        {img: "/imgs/me22.webp", text: "..."},
     ];
 
     const layout = [
@@ -39,11 +39,13 @@ const MosaicGallery = () => {
     ];
 
     const [selectedImg, setSelectedImg] = useState<string | null>(null);
+    const [selectedImgText, setSelectedImgText] = useState<string | null>(null);
     const [descriptionOpen, setDescriptionOpen] = useState(false);
 
     useEffect(() => {
         if (selectedImg) {
             document.body.classList.add('overflow-hidden');
+
         } else {
             document.body.classList.remove('overflow-hidden');
             // setDescriptionOpen(true);
@@ -62,17 +64,20 @@ const MosaicGallery = () => {
         <div className="relative">
             <motion.div
                 className="grid grid-cols-1 mob1:grid-cols-2 mob2:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[100px] p-4">
-                {images.map((src, i) => !selectedImg || src !== selectedImg ? (
+                {images.map((src, i) => !selectedImg || src.img !== selectedImg ? (
                     <motion.button
                         key={i}
                         whileHover={{scale: 1.05}}
-                        layoutId={src} // link this card to the modal
-                        onClick={() => setSelectedImg(src)}
+                        layoutId={src.img} // link this card to the modal
+                        onClick={() => {
+                            setSelectedImg(src.img);
+                            setSelectedImgText(src.text);
+                        }}
                         className={`overflow-visible rounded-lg ${layout[i % layout.length]} `}
                     >
                         <img
                             loading={"lazy"}
-                            src={src}
+                            src={src.img}
                             alt=""
                             className="rounded-lg w-full h-full object-cover"
                         />
@@ -124,12 +129,7 @@ const MosaicGallery = () => {
                                         }}
                                     >
                                         <p className="text-sm text-gray-400 leading-relaxed font-interFont font-medium">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra id
-                                            tortor eget mattis.
-                                            Integer eu blandit ipsum, eu luctus nisl. Nullam eu ultrices leo, sit amet
-                                            viverra nulla.
-                                            Praesent in consectetur tortor. Phasellus imperdiet tempor condimentum.
-                                            Curabitur nec venenatis mi, eu aliquam sem.
+                                            {selectedImgText}
                                         </p>
                                     </motion.div>)}
                                 </AnimatePresence>
