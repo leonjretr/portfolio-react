@@ -1,31 +1,54 @@
 import Navbar from "../navbars/Navbar.tsx";
 import HomeButton from "../buttons/HomeButton.tsx";
-import SocialLinkButton from "../buttons/SocialLinkButton.tsx";
-import {FaGithub, FaTelegram, FaLinkedin} from "react-icons/fa";
-import {GITHUB_LINK, TELEGRAM_LINK, LINKEDIN_LINK} from "../../config/constants.ts"
 import Hamburger from "../menus/Hamburger.tsx";
 import ThemeToggle from "../toggle/ThemeToggle.tsx";
+import {useEffect, useState} from "react";
+import NavButton from "../buttons/NavButton.tsx";
 
 const Header = () => {
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const heroEl = document.getElementById("home");
+        const threshold = heroEl ? heroEl.offsetHeight - 80 : window.innerHeight - 80;
+
+        let ticking = false;
+        const onScroll = () => {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(() => {
+                setIsScrolled(window.scrollY > threshold);
+                ticking = false;
+            });
+        };
+        onScroll();
+
+        window.addEventListener("scroll", onScroll, {passive: true});
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
+
     return (
         <div
-            className="flex z-50 justify-between p-2 h-20 rounded-b-xl items-center w-full bg-cyan-50 dark:text-white dark:bg-bgDarkColor">
-            <>
+            className={`grid grid-cols-3 fixed top-0 left-0 z-50 items-center w-full h-20 px-6 transition-colors duration-300 ${
+                isScrolled
+                    ? "bg-cyan-50 dark:text-white dark:bg-bgDarkColor shadow-md"
+                    : "bg-transparent text-white"
+            }`}>
+            <div className={"flex items-center"}>
                 <HomeButton/>
-            </>
-            <div className="hidden md:flex ml-24">
+            </div>
+
+            <div className={"hidden md:flex items-center justify-center"}>
                 <Navbar/>
             </div>
-            <div className={"md:hidden"}>
-                <ThemeToggle/>
+
+            <div className={"hidden md:flex items-center justify-end gap-x-4"}>
+                <NavButton text={"GET IN TOUCH"} sectionLink={"contact"}/>
+                <ThemeToggle transparent={!isScrolled}/>
             </div>
-            <div className={"hidden md:flex md:items-center"}>
-                <ThemeToggle/>
-                <SocialLinkButton icon={<FaTelegram/>} link={TELEGRAM_LINK}/>
-                <SocialLinkButton icon={<FaGithub/>} link={GITHUB_LINK}/>
-                <SocialLinkButton icon={<FaLinkedin/>} link={LINKEDIN_LINK}/>
-            </div>
-            <div className={"md:hidden"}>
+
+            <div className={"col-span-2 col-start-2 flex md:hidden items-center justify-end gap-x-4"}>
+                <ThemeToggle transparent={!isScrolled}/>
                 <Hamburger/>
             </div>
         </div>

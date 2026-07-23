@@ -14,7 +14,7 @@ const NavRouteButton: FC<NavRouteButtonProps> = ({text, routeLink}) => {
     return (
         <Link to={`${routeLink}`}>
             <motion.button
-                className={"hover:bg-gray-100 hover:dark:bg-bgDarkColor hover:dark:text-white hover:rounded-lg dark:text-neutral-400 p-1"}
+                className={"w-max sm:text-lg text-white p-2"}
                 whileHover={{scale: 1.2}}
                 whileTap={{scale: 0.9}}
                 onClick={() => nav(routeLink)}
