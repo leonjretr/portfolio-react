@@ -31,19 +31,19 @@ const Header = () => {
         <div
             className={`grid grid-cols-3 fixed top-0 left-0 z-50 items-center w-full h-20 px-6 transition-colors duration-300 ${
                 isScrolled
-                    ? "bg-cyan-50 dark:text-white dark:bg-bgDarkColor shadow-md"
+                    ? "bg-creamColor text-textWarm dark:text-white dark:bg-bgDarkColor shadow-md"
                     : "bg-transparent text-white"
             }`}>
             <div className={"flex items-center"}>
                 <HomeButton/>
             </div>
 
-            <div className={"hidden md:flex items-center justify-center"}>
+            <div className={"hidden font-poppinsFont md:flex items-center justify-center"}>
                 <Navbar/>
             </div>
 
-            <div className={"hidden md:flex items-center justify-end gap-x-4"}>
-                <NavButton text={"GET IN TOUCH"} sectionLink={"contact"}/>
+            <div className={"hidden font-poppinsFont md:flex items-center justify-end gap-x-4"}>
+                <NavButton text={"get in touch"} sectionLink={"contact"}/>
                 <ThemeToggle transparent={!isScrolled}/>
             </div>
 

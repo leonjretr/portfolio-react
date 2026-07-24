@@ -23,7 +23,7 @@ const NavButton: FC<NavButtonProps> = ({text, sectionLink}) => {
     }
     return (
         <motion.button
-            className={"w-max sm:text-lg text-white p-2 font-poppinsFont"}
+            className={"w-max p-2 transition-colors hover:text-greenNew dark:hover:text-greenNew"}
             whileHover={{scale: 1.2}}
             whileTap={{scale: 0.9}}
             onClick={butClick}

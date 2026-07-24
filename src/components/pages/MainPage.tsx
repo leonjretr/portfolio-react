@@ -10,7 +10,7 @@ import {motion} from "framer-motion";
 
 const MainPage = observer(() => {
     return (
-        <div className={"min-h-screen scroll-smooth dark:bg-bgDarkColor"}
+        <div className={"min-h-screen scroll-smooth"}
         >
             <PageWrapper>
                 <div id={"home"} className={"relative h-screen w-full overflow-hidden"}>
@@ -28,7 +28,7 @@ const MainPage = observer(() => {
                             animate={{opacity: 1, y: 0}}
                             transition={{duration: 0.8}}
                             className={"font-poppinsFont text-5xl font-medium md:text-7xl"}>
-                            LEO SV.
+                            LEONID SV.
                         </motion.h1>
                         <motion.p
                             initial={{opacity: 0, y: 20}}

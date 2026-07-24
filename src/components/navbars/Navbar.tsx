@@ -4,17 +4,20 @@ import NavRouteButton from "../buttons/NavRouteButton.tsx";
 const Navbar = () => {
 
     const navButtons = [
-        {buttonText: "PROJECTS", link: "projects"},
-        {buttonText: "BIOGRAPHY", link: "about"},
+        {buttonText: "projects", link: "projects"},
+        {buttonText: "biography", link: "about"},
     ];
 
     return (
-        <div className={"flex font-poppinsFont text-base font-normal gap-x-6"}>
-            <div className={"flex gap-x-2"}>
+        <div className={"flex items-center text-base font-normal gap-x-6"}>
+            <div className={"flex items-center gap-x-2"}>
                 {navButtons.map((button) => (
-                    <NavButton text={button.buttonText} sectionLink={button.link} key={button.link}/>
+                    <div className={"flex items-center gap-x-2"} key={button.link}>
+                        <NavButton text={button.buttonText} sectionLink={button.link}/>
+                        <span className={"opacity-50"}>/</span>
+                    </div>
                 ))}
-                <NavRouteButton text={"GALLERY"} routeLink={"/blog"}/>
+                <NavRouteButton text={"gallery"} routeLink={"/blog"}/>
             </div>
         </div>
     );

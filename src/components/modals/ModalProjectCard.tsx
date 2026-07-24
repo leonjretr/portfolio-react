@@ -1,4 +1,5 @@
 import React, {FC} from "react";
+import {createPortal} from "react-dom";
 
 interface ProjectCardModalProps {
     showModal: boolean;
@@ -8,7 +9,7 @@ interface ProjectCardModalProps {
 
 const ModalProjectCard: FC<ProjectCardModalProps> = ({showModal, closeModal, children}) => {
     if (!showModal) return null;
-    return (
+    return createPortal(
         <div
             className="fixed inset-12 flex place-items-center justify-center z-50 overflow-y-auto overflow-x-hidden">
             <div className="fixed inset-0 bg-black bg-opacity-50 overscroll-hidden backdrop-blur-sm"
@@ -16,7 +17,8 @@ const ModalProjectCard: FC<ProjectCardModalProps> = ({showModal, closeModal, chi
             <div className="bg-white relative text-center p-4 rounded-xl z-10 break-all">
                 {children}
             </div>
-        </div>
+        </div>,
+        document.body
     );
 };
 
