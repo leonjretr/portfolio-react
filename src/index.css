@@ -8,6 +8,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    body {
+        @apply bg-creamColor text-textWarm transition-colors duration-300;
+    }
+
+    .dark body {
+        @apply text-white;
+        background-color: #221F1F;
+        background-image: radial-gradient(ellipse 120% 80% at 50% -10%, theme('colors.bgDarkColorSoft'), theme('colors.bgDarkColor'));
+        background-attachment: fixed;
+    }
+}
+
 @layer utilities {
     .noise-overlay {
         position: relative;

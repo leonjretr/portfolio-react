@@ -17,7 +17,7 @@ const HamburgerMenu = () => {
             exit={"exit"}
             variants={overlayVariants}
             transition={{duration: 0.1}}
-            className={"flex fixed top-16 text-left items-center w-full dark:bg-bgDarkColor bg-cyan-50 z-50 text-black dark:text-white px-6 pb-3 rounded-b-lg"}>
+            className={"flex fixed top-16 text-left items-center w-full dark:bg-bgDarkColor bg-creamColor z-50 text-textWarm dark:text-white px-6 pb-3 rounded-b-lg shadow-md"}>
             <motion.div
                 initial={{height: 0, opacity: 0}}
                 animate={{height: 'auto', opacity: 1}}

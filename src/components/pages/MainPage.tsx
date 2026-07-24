@@ -1,5 +1,3 @@
-import IntroductionSection from "../sections/IntroductionSection.tsx";
-import PhotoSection from "../sections/PhotoSection.tsx";
 import PageWrapper from "../wrappers/PageWrapper.tsx";
 import HorizontalDivider from "../dividers/HorizontalDivider.tsx";
 import AboutSection from "../sections/AboutSection.tsx";
@@ -8,16 +6,41 @@ import ContactSection from "../sections/ContactSection.tsx";
 import ToastStore from "../../stores/ToastStore.ts";
 import {observer} from "mobx-react-lite";
 import Toast from "../toasts/Toast.tsx";
+import {motion} from "framer-motion";
 
 const MainPage = observer(() => {
     return (
-        <div className={"min-h-screen bg-white dark:bg-bgDarkColor scroll-smooth"}
-            >
+        <div className={"min-h-screen scroll-smooth"}
+        >
             <PageWrapper>
-                <div id={"home"}>
-                    <IntroductionSection/>
+                <div id={"home"} className={"relative h-screen w-full overflow-hidden"}>
+                    <img
+                        src={"img072.jpg"}
+                        alt={"home background"}
+                        className={"absolute inset-0 h-full w-full object-cover"}
+                    />
+                    <div className={"absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/60"}/>
+
+                    <div
+                        className={"absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-white"}>
+                        <motion.h1
+                            initial={{opacity: 0, y: 20}}
+                            animate={{opacity: 1, y: 0}}
+                            transition={{duration: 0.8}}
+                            className={"font-poppinsFont text-5xl font-medium md:text-7xl"}>
+                            LEONID SV.
+                        </motion.h1>
+                        <motion.p
+                            initial={{opacity: 0, y: 20}}
+                            animate={{opacity: 1, y: 0}}
+                            transition={{duration: 0.8, delay: 0.15}}
+                            className={"font-niceFont mt-3 text-lg italic text-white/90 md:text-2xl"}>
+                            сapturing light. сrafting code.
+                        </motion.p>
+                    </div>
+                    {/*<IntroductionSection/>*/}
                 </div>
-                <PhotoSection/>
+                {/*<PhotoSection/>*/}
 
                 <HorizontalDivider/>
 

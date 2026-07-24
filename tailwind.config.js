@@ -25,6 +25,9 @@ export default {
                 greenDark: "#29665B",
                 amateurColor: "#F4BB44",
                 bgDarkColor: "#221F1F",
+                bgDarkColorSoft: "#2B2725",
+                creamColor: "#F9F6EE",
+                textWarm: "#3A352E",
             },
             spacing: {
                 "88": "22rem",
