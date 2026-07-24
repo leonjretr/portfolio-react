@@ -14,11 +14,14 @@ const MainPage = observer(() => {
         >
             <PageWrapper>
                 <div id={"home"} className={"relative h-screen w-full overflow-hidden"}>
-                    <img
-                        src={"img072.jpg"}
-                        alt={"home background"}
-                        className={"absolute inset-0 h-full w-full object-cover"}
-                    />
+                    <picture>
+                        <source media={"(min-width: 768px)"} srcSet={"img072.jpg"}/>
+                        <img
+                            src={"img048.jpg"}
+                            alt={"home background"}
+                            className={"absolute inset-0 h-full w-full object-cover"}
+                        />
+                    </picture>
                     <div className={"absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/60"}/>
 
                     <div

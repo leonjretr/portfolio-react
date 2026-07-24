@@ -1,4 +1,4 @@
-import React, {useLayoutEffect, useRef, useState} from 'react';
+import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
 
 interface PopoverProps {
     children: React.ReactNode;
@@ -8,44 +8,60 @@ interface PopoverProps {
     img?: string;
 }
 
+const getPopoverWidth = () => {
+    if (window.innerWidth < 640) return 128; // w-32
+    if (window.innerWidth < 1024) return 320; // sm:w-80
+    return 384; // lg:w-96
+};
+
 const Popover: React.FC<PopoverProps> = ({children, title, description, linkToWiki, img}) => {
     const [isVisible, setIsVisible] = useState(false);
 
-    const [position, setPosition] = useState<'left' | 'right'>('left');
+    const [position, setPosition] = useState<'left' | 'right'>('right');
     const triggerRef = useRef<HTMLDivElement>(null);
-    const popoverWidth = 650;
+    const wrapperRef = useRef<HTMLDivElement>(null);
+
+    const calculatePosition = () => {
+        if (!triggerRef.current) return;
+        const triggerRect = triggerRef.current.getBoundingClientRect();
+        const width = getPopoverWidth();
+        const spaceOnRight = window.innerWidth - triggerRect.right;
+        const spaceOnLeft = triggerRect.left;
+
+        if (spaceOnRight >= width) {
+            setPosition('right');
+        } else if (spaceOnLeft >= width) {
+            setPosition('left');
+        } else {
+            setPosition(spaceOnRight >= spaceOnLeft ? 'right' : 'left');
+        }
+    };
 
     useLayoutEffect(() => {
-        const calculatePosition = () => {
-            if (triggerRef.current) {
-                const triggerRect = triggerRef.current.getBoundingClientRect();
-                const spaceOnLeft = triggerRect.left;
+        if (!isVisible) return;
+        calculatePosition();
 
-                if (spaceOnLeft > popoverWidth) {
-                    setPosition('left');
-                } else {
-                    setPosition('right');
-                }
+        window.addEventListener('resize', calculatePosition);
+        return () => window.removeEventListener('resize', calculatePosition);
+    }, [isVisible]);
+
+    useEffect(() => {
+        if (!isVisible) return;
+        const handleClickOutside = (e: MouseEvent) => {
+            if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
+                setIsVisible(false);
             }
         };
-        setTimeout(() => {
-            calculatePosition();
-        }, 5);
+        document.addEventListener('click', handleClickOutside);
+        return () => document.removeEventListener('click', handleClickOutside);
+    }, [isVisible]);
 
-        const handleResize = () => {
-            calculatePosition();
-        };
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, [triggerRef]);
     return (
-        <div className="relative inline-block">
+        <div className="relative inline-block" ref={wrapperRef}>
             <div ref={triggerRef}
                  onMouseEnter={() => setIsVisible(true)}
                  onMouseLeave={() => setIsVisible(false)}
+                 onClick={() => setIsVisible(true)}
                  className="text-sm md:text-base lg:text-lg"
             >
                 {children}
@@ -54,19 +70,21 @@ const Popover: React.FC<PopoverProps> = ({children, title, description, linkToWi
                 <div
                     onMouseEnter={() => setIsVisible(true)}
                     onMouseLeave={() => setIsVisible(false)}
-                    className={`absolute ${position === "left" && "sm:right-5 bottom-full"} ${position === "right" && "sm:left-5 bottom-full"} z-10 w-32 sm:w-80 lg:w-96 h-auto text-sm text-white bg-white rounded-md shadow-lg`}
+                    className={`absolute bottom-full ${position === "left" ? "right-0" : "left-0"} z-10 w-32 sm:w-80 lg:w-96 h-auto overflow-hidden text-sm bg-white rounded-md shadow-lg`}
                 >
-                    <div className="flex justify-between h-auto items-center">
-                        <div className="col-span-3 p-3">
+                    <div className="flex justify-between h-auto items-stretch">
+                        <div className="p-3">
                             <div className="space-y-2">
                                 <h3 className="font-semibold text-xs sm:text-sm text-black">{title}</h3>
                                 <p className={"text-xs text-gray-900 text-left"}>{description}</p>
                                 <a target="_blank" href={linkToWiki}
-                                   className="flex items-center font-medium text-blue-600 dark:text-blue-500 dark:hover:text-blue-600 hover:text-blue-700 hover:underline">Read
+                                   className="flex items-center font-medium text-greenDark hover:text-greenNew dark:text-greenNew dark:hover:text-amateurColor hover:underline">Read
                                     more </a>
                             </div>
                         </div>
-                        <img src={img} className="min-w-40 w-full h-full rounded-lg p-1 hidden md:flex" alt="Popover Image"/>
+                        <img src={img}
+                             className="hidden md:block w-32 lg:w-40 shrink-0 aspect-square object-cover"
+                             alt="Popover Image"/>
                     </div>
                 </div>
             )}

@@ -2,19 +2,27 @@ import {motion} from "framer-motion";
 import HamburgerStore from "../../stores/HamburgerStore.ts";
 import {observer} from "mobx-react-lite";
 
-const Hamburger = observer(() => {
+interface HamburgerProps {
+    transparent?: boolean;
+}
+
+const Hamburger = observer(({transparent = false}: HamburgerProps) => {
 
     const toggleMenu = () => {
         HamburgerStore.isOpen = !HamburgerStore.isOpen;
     };
 
     return (
-        <nav className="flex justify-center items-center text-white m-4">
+        <nav className="flex justify-center items-center m-2 md:m-4">
             <motion.button
                 whileHover={{scale: 1.1}}
                 whileTap={{scale: 0.95}}
                 animate={HamburgerStore.isOpen ? {rotate:-90} : {rotate:0}}
-                className="inline-flex items-center -mt-1 w-10 h-10 justify-center text-base text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                className={`inline-flex items-center -mt-1 w-10 h-10 justify-center text-base rounded-lg transition-colors duration-300 focus:outline-none focus:ring-2 ${
+                    transparent
+                        ? "text-white hover:bg-white/10 focus:ring-white/30"
+                        : "text-textWarm hover:bg-black/5 focus:ring-black/10 dark:text-white dark:hover:bg-white/10 dark:focus:ring-white/20"
+                }`}
                 onClick={toggleMenu}>
                 <svg
                     className="w-8 h-8"
