@@ -18,7 +18,7 @@ const AboutText = () => {
             linkToWiki={"https://www.britannica.com/biography/Leonidas-king-of-Sparta"}
         >
             <span
-                className={"underline text-sm md:text-base lg:text-lg hover:no-underline text-blue-600 cursor-pointer"}>
+                className={"underline text-sm md:text-base lg:text-lg hover:no-underline text-greenDark dark:text-greenNew cursor-pointer"}>
                  Leonid
             </span>
         </Popover>, I am a web developer and also a film photographer! I think I am very lucky to have those two things
@@ -29,7 +29,7 @@ const AboutText = () => {
             title={"About university"}
             description={"KNUE is the largest economic higher educational and research institution in Eastern Ukraine. Follow the link below:"}>
             <span
-                className={"underline text-sm md:text-base lg:text-lg hover:no-underline text-blue-600 cursor-pointer"}>
+                className={"underline text-sm md:text-base lg:text-lg hover:no-underline text-greenDark dark:text-greenNew cursor-pointer"}>
                  University
             </span>
         </Popover> of Economics graduate in Computer Science.
@@ -40,7 +40,7 @@ const AboutText = () => {
             title={"My experience"}
             description={`I did game dev for 2 years and 3D modelling for 1.5 years. Follow the link below:`}>
             <div
-                className={"underline text-sm md:text-base lg:text-lg hover:no-underline text-blue-600 cursor-pointer"}>
+                className={"underline text-sm md:text-base lg:text-lg hover:no-underline text-greenDark dark:text-greenNew cursor-pointer"}>
                 3D modelling
             </div>
         </Popover> in 3dsMax. Moreover, I've tried many programming languages such as <span

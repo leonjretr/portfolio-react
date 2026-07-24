@@ -71,10 +71,6 @@ const Terminal: React.FC = observer(() => {
         setHistory([...history, `leonterminal$ ${command}`, output]);
     };
 
-    // useEffect(() => {
-    //     terminalRef.current?.scrollIntoView({behavior: 'smooth'});
-    // }, [history]);
-
     const sendEmail = () => {
         const templateParams = {
             from_name: formName,
@@ -99,7 +95,7 @@ const Terminal: React.FC = observer(() => {
 
     return (
         <div
-            className="flex flex-col bg-indigo-950 text-white text-xs md:text-sm font-terminalFont w-96 h-64 md:w-120 md:h-72 xl:w-130 xl:h-80 p-4 rounded-lg dark:bg-gray-800">
+            className="flex flex-col bg-indigo-950 text-white text-xs md:text-sm font-terminalFont w-96 h-64 md:w-120 md:h-72 xl:w-130 xl:h-80 m-5 p-4 rounded-lg dark:bg-gray-800">
             <div className={"flex flex-col"}>
                 <div className={"text-xs md:text-sm"}>
                     {welcomingTitle}
