@@ -6,7 +6,7 @@ const AboutSection = () => {
     return (
         <div className={"flex flex-col mx-8 md:mx-16 lg:mx-32 xl:mx-36"}>
             <div className={"dark:text-white"}>
-                <h1 className={"font-interFont text-3xl md:text-5xl font-bold text-center mb-3 md:mb-6"}>About me</h1>
+                <h1 className={"font-interFont text-3xl md:text-5xl font-bold text-center mb-3 md:mb-6"}>biography</h1>
                 <AboutText/>
             </div>
             <div className={"flex justify-start gap-2 my-2 flex-wrap select-none mt-5"}>

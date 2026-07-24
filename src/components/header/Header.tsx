@@ -2,30 +2,11 @@ import Navbar from "../navbars/Navbar.tsx";
 import HomeButton from "../buttons/HomeButton.tsx";
 import Hamburger from "../menus/Hamburger.tsx";
 import ThemeToggle from "../toggle/ThemeToggle.tsx";
-import {useEffect, useState} from "react";
 import NavButton from "../buttons/NavButton.tsx";
+import useIsScrolledPastHero from "../scroll/useIsScrolledPastHero.ts";
 
 const Header = () => {
-    const [isScrolled, setIsScrolled] = useState(false);
-
-    useEffect(() => {
-        const heroEl = document.getElementById("home");
-        const threshold = heroEl ? heroEl.offsetHeight - 80 : window.innerHeight - 80;
-
-        let ticking = false;
-        const onScroll = () => {
-            if (ticking) return;
-            ticking = true;
-            requestAnimationFrame(() => {
-                setIsScrolled(window.scrollY > threshold);
-                ticking = false;
-            });
-        };
-        onScroll();
-
-        window.addEventListener("scroll", onScroll, {passive: true});
-        return () => window.removeEventListener("scroll", onScroll);
-    }, []);
+    const isScrolled = useIsScrolledPastHero();
 
     return (
         <div
@@ -34,22 +15,27 @@ const Header = () => {
                     ? "bg-creamColor text-textWarm dark:text-white dark:bg-bgDarkColor shadow-md"
                     : "bg-transparent text-white"
             }`}>
-            <div className={"flex items-center"}>
+            <div className={"col-start-1 flex items-center"}>
                 <HomeButton/>
             </div>
 
-            <div className={"hidden font-poppinsFont md:flex items-center justify-center"}>
-                <Navbar/>
+            <div className={"col-start-2 flex items-center justify-center"}>
+                <div className={"hidden font-poppinsFont md:flex"}>
+                    <Navbar/>
+                </div>
+                <div className={"flex md:hidden"}>
+                    <ThemeToggle transparent={!isScrolled}/>
+                </div>
             </div>
 
-            <div className={"hidden font-poppinsFont md:flex items-center justify-end gap-x-4"}>
-                <NavButton text={"get in touch"} sectionLink={"contact"}/>
-                <ThemeToggle transparent={!isScrolled}/>
-            </div>
-
-            <div className={"col-span-2 col-start-2 flex md:hidden items-center justify-end gap-x-4"}>
-                <ThemeToggle transparent={!isScrolled}/>
-                <Hamburger/>
+            <div className={"col-start-3 flex items-center justify-end"}>
+                <div className={"hidden font-poppinsFont md:flex items-center gap-x-4"}>
+                    <NavButton text={"get in touch"} sectionLink={"contact"}/>
+                    <ThemeToggle transparent={!isScrolled}/>
+                </div>
+                <div className={"flex md:hidden"}>
+                    <Hamburger transparent={!isScrolled}/>
+                </div>
             </div>
         </div>
     );
