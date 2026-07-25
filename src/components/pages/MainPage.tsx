@@ -41,11 +41,7 @@ const MainPage = observer(() => {
                             сapturing light. сrafting code.
                         </motion.p>
                     </div>
-                    {/*<IntroductionSection/>*/}
                 </div>
-                {/*<PhotoSection/>*/}
-
-                <HorizontalDivider/>
 
                 <div className={"scroll-smooth"} id={"projects"}>
                     <ProjectSection/>
