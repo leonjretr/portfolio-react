@@ -83,8 +83,14 @@ const MosaicGallery = () => {
         setOpenedImg(images[index].img);
     };
     const closeModal = () => setSelectedIndex(null);
-    const goNext = () => setSelectedIndex((i) => (i === null ? null : (i + 1) % images.length));
-    const goPrev = () => setSelectedIndex((i) => (i === null ? null : (i - 1 + images.length) % images.length));
+    const goNext = () => {
+        setDescriptionOpen(false);
+        setSelectedIndex((i) => (i === null ? null : (i + 1) % images.length));
+    };
+    const goPrev = () => {
+        setDescriptionOpen(false);
+        setSelectedIndex((i) => (i === null ? null : (i - 1 + images.length) % images.length));
+    };
 
     useEffect(() => {
         if (selected) {
@@ -197,17 +203,19 @@ const MosaicGallery = () => {
                                         </p>
                                     </motion.div>)}
                                 </AnimatePresence>
-                                <motion.button
-                                    onClick={() => setDescriptionOpen(!descriptionOpen)}
-                                    whileTap={{scale: 0.95}}
-                                    className={"absolute top-4 right-4 z-10 rounded-md active:scale-95 bg-black/50 text-white hover:bg-black/70 text-xl mob2:text-2xl p-1 mob1:p-2 mob2:p-3"}
-                                    transition={{layout: {duration: 0.6, ease: [0.22, 1, 0.36, 1]}}}>
-                                    <IoIosArrowDown
-                                        className={`transition-transform duration-300 ${
-                                            descriptionOpen ? "rotate-180" : "rotate-0"
-                                        }`}
-                                    />
-                                </motion.button>
+                                {selected.text && (
+                                    <motion.button
+                                        onClick={() => setDescriptionOpen(!descriptionOpen)}
+                                        whileTap={{scale: 0.95}}
+                                        className={"absolute top-4 right-4 z-10 rounded-md active:scale-95 bg-black/50 text-white hover:bg-black/70 text-xl mob2:text-2xl p-1 mob1:p-2 mob2:p-3"}
+                                        transition={{layout: {duration: 0.6, ease: [0.22, 1, 0.36, 1]}}}>
+                                        <IoIosArrowDown
+                                            className={`transition-transform duration-300 ${
+                                                descriptionOpen ? "rotate-180" : "rotate-0"
+                                            }`}
+                                        />
+                                    </motion.button>
+                                )}
                                 <motion.button
                                     onClick={closeModal}
                                     whileTap={{scale: 0.95}}
