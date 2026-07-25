@@ -1,107 +1,149 @@
-import {useState, useEffect} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {motion, AnimatePresence} from "framer-motion";
 import {IoIosArrowDown} from "react-icons/io";
 import {IoMdClose} from "react-icons/io";
+import {IoChevronBack, IoChevronForward} from "react-icons/io5";
 
-const MosaicGallery = () => {
-    const images = [
-        {img: "/imgs/carinterior.jpg", text: "my stunning, charming car - first I ever bought and owned\n" +
-                "toyota starlet its name is,\n" +
-                "and more precious thing shall not exist\n" +
-                "i'll remember us forever\n" +
-                "the endeavour I put in you\n" +
-                "whatsoever life will place in the midst;\n" +
-                "midst of our bonded, broken parts\n" +
-                "that form a whole, bloodshot heart "},
-        {img: "/imgs/turkey.webp", text: "..."},
-        {img: "/imgs/bench.jpg", text: "..."},
-        {img: "/imgs/3dproject.jpg", text: "My 3d Project"},
-        {img: "/imgs/carme.jpg", text: "my stunning, charming car - first I ever bought and owned\n" +
-                "toyota starlet its name is,\n" +
-                "and more precious thing shall not exist\n" +
-                "i'll remember us forever\n" +
-                "the endeavour I put in you\n" +
-                "whatsoever life will place in the midst;\n" +
-                "midst of our bonded, broken parts\n" +
-                "that form a whole, bloodshot heart"},
-        {img: "/imgs/cemetery.jpg", text: "..."},
-        {img: "/imgs/tree.jpg", text: "..."},
-        {img: "/imgs/tunnelvenice.webp", text: "..."},
-        {img: "/imgs/house.jpg", text: "..."},
-        {img: "/imgs/chatsworth.jpg", text: "..."},
-        {img: "/imgs/street.jpg", text: "..."},
-        {img: "/imgs/retrome.webp", text: "..."},
-        {img: "/imgs/krakow.jpg", text: "..."},
-        {img: "/imgs/me22.webp", text: "..."},
-    ];
+interface GalleryImage {
+    img: string;
+    text: string;
+    width: number;
+    height: number;
+}
 
-    const layout = [
-        "row-span-3",
-        "row-span-2",
-        "row-span-3",
-        "row-span-2",
-        "row-span-3",
-        "row-span-2",
-        "row-span-3",
-        "row-span-2",
-        "row-span-3",
-        "row-span-2",
-        "row-span-3",
-        "row-span-2",
-        "row-span-1",
-        "row-span-1",
-    ];
+const images: GalleryImage[] = [
+    {img: "/gallery/img002.jpg", text: "", width: 1600, height: 2442},
+    {img: "/gallery/img013.jpg", text: "", width: 1600, height: 2441},
+    {img: "/gallery/img014.jpg", text: "", width: 1600, height: 2459},
+    {img: "/gallery/img015.jpg", text: "", width: 1600, height: 2453},
+    {img: "/gallery/img029.jpg", text: "", width: 1600, height: 2444},
+    {img: "/gallery/img048.jpg", text: "", width: 1600, height: 2439},
+    {img: "/gallery/img057.jpg", text: "", width: 1600, height: 1130},
+    {img: "/gallery/img072.jpg", text: "", width: 1600, height: 1012},
+    {img: "/gallery/img074.jpg", text: "", width: 1600, height: 2457},
+    {img: "/gallery/img085.jpg", text: "", width: 1600, height: 2533},
+    {img: "/gallery/img087.jpg", text: "", width: 1600, height: 2533},
+    {img: "/gallery/img103.jpg", text: "", width: 1600, height: 1024},
+    {img: "/gallery/img113.jpg", text: "", width: 1600, height: 2295},
+    {img: "/gallery/img121.jpg", text: "", width: 1600, height: 1008},
+    {img: "/gallery/img128.jpg", text: "", width: 1600, height: 2512},
+    {img: "/gallery/img176.jpg", text: "", width: 1600, height: 998},
+    {img: "/gallery/img197.jpg", text: "", width: 1600, height: 2502},
+];
 
-    const [selectedImg, setSelectedImg] = useState<string | null>(null);
-    const [selectedImgText, setSelectedImgText] = useState<string | null>(null);
-    const [descriptionOpen, setDescriptionOpen] = useState(false);
+const getColumnCount = () => {
+    if (window.innerWidth >= 1024) return 4;
+    if (window.innerWidth >= 768) return 3;
+    if (window.innerWidth >= 385) return 2;
+    return 1;
+};
+
+const useColumnCount = () => {
+    const [columnCount, setColumnCount] = useState(getColumnCount);
 
     useEffect(() => {
-        if (selectedImg) {
-            document.body.classList.add('overflow-hidden');
+        let ticking = false;
+        const onResize = () => {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(() => {
+                setColumnCount(getColumnCount());
+                ticking = false;
+            });
+        };
+        window.addEventListener("resize", onResize);
+        return () => window.removeEventListener("resize", onResize);
+    }, []);
 
+    return columnCount;
+};
+
+const MosaicGallery = () => {
+    const columnCount = useColumnCount();
+
+    const columns = useMemo(() => {
+        const cols: { image: GalleryImage; index: number }[][] = Array.from({length: columnCount}, () => []);
+        const heights = new Array(columnCount).fill(0);
+        images.forEach((image, index) => {
+            const shortest = heights.indexOf(Math.min(...heights));
+            cols[shortest].push({image, index});
+            heights[shortest] += image.height / image.width;
+        });
+        return cols;
+    }, [columnCount]);
+
+    const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+    const [openedImg, setOpenedImg] = useState<string | null>(null);
+    const [descriptionOpen, setDescriptionOpen] = useState(false);
+
+    const selected = selectedIndex !== null ? images[selectedIndex] : null;
+
+    const openImage = (index: number) => {
+        setSelectedIndex(index);
+        setOpenedImg(images[index].img);
+    };
+    const closeModal = () => setSelectedIndex(null);
+    const goNext = () => setSelectedIndex((i) => (i === null ? null : (i + 1) % images.length));
+    const goPrev = () => setSelectedIndex((i) => (i === null ? null : (i - 1 + images.length) % images.length));
+
+    useEffect(() => {
+        if (selected) {
+            document.body.classList.add('overflow-hidden');
         } else {
             document.body.classList.remove('overflow-hidden');
-            // setDescriptionOpen(true);
         }
-    }, [selectedImg]);
+    }, [selected]);
 
     useEffect(() => {
         const onKey = (e: KeyboardEvent) => {
-            if (e.key === "Escape") setSelectedImg(null);
+            if (e.key === "Escape") closeModal();
+            if (e.key === "ArrowRight") goNext();
+            if (e.key === "ArrowLeft") goPrev();
         };
         window.addEventListener("keydown", onKey);
         return () => window.removeEventListener("keydown", onKey);
     }, []);
 
+    useEffect(() => {
+        if (selectedIndex === null) return;
+        const preload = (idx: number) => {
+            const image = new window.Image();
+            image.src = images[idx].img;
+        };
+        preload((selectedIndex + 1) % images.length);
+        preload((selectedIndex - 1 + images.length) % images.length);
+    }, [selectedIndex]);
+
     return (
         <div className="relative">
-            <motion.div
-                className="grid grid-cols-1 mob1:grid-cols-2 mob2:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[100px] p-4">
-                {images.map((src, i) => !selectedImg || src.img !== selectedImg ? (
-                    <motion.button
-                        key={i}
-                        whileHover={{scale: 1.05}}
-                        layoutId={src.img} // link this card to the modal
-                        onClick={() => {
-                            setSelectedImg(src.img);
-                            setSelectedImgText(src.text);
-                        }}
-                        className={`overflow-visible rounded-lg ${layout[i % layout.length]} `}
-                    >
-                        <img
-                            loading={"lazy"}
-                            src={src.img}
-                            alt=""
-                            className="rounded-lg w-full h-full object-cover"
-                        />
-                    </motion.button>
-                ) : null)}
-            </motion.div>
+            <div className="flex gap-4 p-4">
+                {columns.map((column, colIndex) => (
+                    <div key={colIndex} className="flex flex-1 flex-col gap-4">
+                        {column.map(({image, index}) => !selected || image.img !== openedImg ? (
+                            <motion.button
+                                key={image.img}
+                                layoutId={image.img} // link this card to the modal
+                                onClick={() => openImage(index)}
+                                className="block w-full overflow-hidden rounded-lg"
+                            >
+                                <motion.img
+                                    whileHover={{scale: 1.08}}
+                                    transition={{duration: 0.3}}
+                                    loading={"lazy"}
+                                    src={image.img}
+                                    alt=""
+                                    style={{aspectRatio: `${image.width} / ${image.height}`}}
+                                    className="rounded-lg w-full h-auto object-cover"
+                                />
+                            </motion.button>
+                        ) : null)}
+                    </div>
+                ))}
+            </div>
 
             {/* Modal */}
             <AnimatePresence>
-                {selectedImg && (
+                {selected && (
                     <>
                         <motion.div
                             layout
@@ -109,26 +151,34 @@ const MosaicGallery = () => {
                             animate={{opacity: 1}}
                             exit={{opacity: 0}}
                             transition={{duration: 0.35, ease: "easeInOut"}}
-                            className="fixed inset-0 bg-black/70 z-40"
-                            // onClick={() => setSelectedImg(null)}
+                            className="fixed inset-0 bg-black/70 z-[55]"
+                            // onClick={closeModal}
                         />
-                        <div className="fixed inset-0 z-50 flex items-center justify-center">
+                        <div className="fixed inset-0 z-[60] flex items-center justify-center">
+                            <motion.button
+                                onClick={goPrev}
+                                whileTap={{scale: 0.9}}
+                                whileHover={{scale: 1.1}}
+                                className="absolute left-2 mob2:left-4 z-10 rounded-full bg-black/50 text-white hover:bg-black/70 text-xl mob2:text-2xl p-2">
+                                <IoChevronBack/>
+                            </motion.button>
+
                             <motion.div
                                 layout
-                                layoutId={selectedImg}
+                                layoutId={openedImg ?? undefined}
                                 className="relative rounded-lg overflow-hidden will-change-transform bg-neutral-900"
                                 transition={{duration: 0.35, ease: "easeInOut"}}
                             >
 
                                 <motion.img
-                                    src={selectedImg}
-                                    srcSet={`${selectedImg} 600w, ${selectedImg} 1200w, ${selectedImg} 2000w`}
-                                    sizes="(max-width: 600px) 600px, (max-width: 1200px) 1200px, 2000px"
+                                    key={selected.img}
+                                    initial={{opacity: 0}}
+                                    animate={{opacity: 1}}
+                                    src={selected.img}
                                     alt=""
-                                    className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg"
+                                    style={{aspectRatio: `${selected.width} / ${selected.height}`}}
+                                    className="max-w-[80vw] max-h-[85vh] object-contain rounded-lg"
                                     transition={{duration: 0.2, ease: "easeInOut"}}
-                                    loading={"lazy"}
-
                                 />
                                 <AnimatePresence>
                                     {descriptionOpen && (<motion.div
@@ -143,14 +193,14 @@ const MosaicGallery = () => {
                                         }}
                                     >
                                         <p className="text-sm text-gray-400 leading-relaxed font-interFont font-medium">
-                                            {selectedImgText}
+                                            {selected.text}
                                         </p>
                                     </motion.div>)}
                                 </AnimatePresence>
                                 <motion.button
                                     onClick={() => setDescriptionOpen(!descriptionOpen)}
                                     whileTap={{scale: 0.95}}
-                                    className={"absolute top-4 right-4 z-60 rounded-md active:scale-95 bg-black/50 text-white hover:bg-black/70 text-xl mob2:text-2xl p-1 mob1:p-2 mob2:p-3"}
+                                    className={"absolute top-4 right-4 z-10 rounded-md active:scale-95 bg-black/50 text-white hover:bg-black/70 text-xl mob2:text-2xl p-1 mob1:p-2 mob2:p-3"}
                                     transition={{layout: {duration: 0.6, ease: [0.22, 1, 0.36, 1]}}}>
                                     <IoIosArrowDown
                                         className={`transition-transform duration-300 ${
@@ -159,13 +209,21 @@ const MosaicGallery = () => {
                                     />
                                 </motion.button>
                                 <motion.button
-                                    onClick={() => setSelectedImg(null)}
+                                    onClick={closeModal}
                                     whileTap={{scale: 0.95}}
-                                    className={"absolute top-4 left-4 z-60 rounded-md active:scale-95 bg-black/50 text-white hover:bg-black/70 text-xl mob2:text-2xl p-1 mob1:p-2 mob2:p-3"}
+                                    className={"absolute top-4 left-4 z-10 rounded-md active:scale-95 bg-black/50 text-white hover:bg-black/70 text-xl mob2:text-2xl p-1 mob1:p-2 mob2:p-3"}
                                     transition={{layout: {duration: 0.6, ease: [0.22, 1, 0.36, 1]}}}>
                                     <IoMdClose/>
                                 </motion.button>
                             </motion.div>
+
+                            <motion.button
+                                onClick={goNext}
+                                whileTap={{scale: 0.9}}
+                                whileHover={{scale: 1.1}}
+                                className="absolute right-2 mob2:right-4 z-10 rounded-full bg-black/50 text-white hover:bg-black/70 text-xl mob2:text-2xl p-2">
+                                <IoChevronForward/>
+                            </motion.button>
                         </div>
                     </>
                 )}
