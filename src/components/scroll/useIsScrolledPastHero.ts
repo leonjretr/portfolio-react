@@ -5,7 +5,13 @@ const useIsScrolledPastHero = () => {
 
     useEffect(() => {
         const heroEl = document.getElementById("home");
-        const threshold = heroEl ? heroEl.offsetHeight - 80 : window.innerHeight - 80;
+
+        if (!heroEl) {
+            setIsScrolled(true);
+            return;
+        }
+
+        const threshold = heroEl.offsetHeight - 80;
 
         let ticking = false;
         const onScroll = () => {
