@@ -10,8 +10,7 @@ import {motion} from "framer-motion";
 
 const MainPage = observer(() => {
     return (
-        <div className={"min-h-screen scroll-smooth"}
-        >
+        <div className={"min-h-screen scroll-smooth"}>
             <PageWrapper>
                 <div id={"home"} className={"relative h-screen w-full overflow-hidden"}>
                     <picture>
@@ -43,7 +42,7 @@ const MainPage = observer(() => {
                     </div>
                 </div>
 
-                <div className={"scroll-smooth"} id={"projects"}>
+                <div className={"scroll-smooth mt-5"} id={"projects"}>
                     <ProjectSection/>
                 </div>
 
