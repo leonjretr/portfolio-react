@@ -2,7 +2,7 @@ import {useEffect, useMemo, useState} from "react";
 import {motion, AnimatePresence} from "framer-motion";
 import {IoIosArrowDown} from "react-icons/io";
 import {IoMdClose} from "react-icons/io";
-import {IoChevronBack, IoChevronForward} from "react-icons/io5";
+import {IoChevronBack, IoChevronForward, IoExpandOutline} from "react-icons/io5";
 
 interface GalleryImage {
     img: string;
@@ -75,8 +75,12 @@ const MosaicGallery = () => {
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
     const [openedImg, setOpenedImg] = useState<string | null>(null);
     const [descriptionOpen, setDescriptionOpen] = useState(false);
+    const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
 
     const selected = selectedIndex !== null ? images[selectedIndex] : null;
+
+    const markLoaded = (src: string) =>
+        setLoadedImages((prev) => (prev.has(src) ? prev : new Set(prev).add(src)));
 
     const openImage = (index: number) => {
         setSelectedIndex(index);
@@ -125,22 +129,39 @@ const MosaicGallery = () => {
             <div className="flex gap-4 p-4">
                 {columns.map((column, colIndex) => (
                     <div key={colIndex} className="flex flex-1 flex-col gap-4">
-                        {column.map(({image, index}) => !selected || image.img !== openedImg ? (
+                        {column.map(({image, index}, localIdx) => !selected || image.img !== openedImg ? (
                             <motion.button
                                 key={image.img}
                                 layoutId={image.img} // link this card to the modal
                                 onClick={() => openImage(index)}
-                                className="block w-full overflow-hidden rounded-lg"
+                                initial={{opacity: 0, y: 24}}
+                                whileInView={{opacity: 1, y: 0}}
+                                viewport={{once: true, margin: "-60px"}}
+                                transition={{duration: 0.45, delay: Math.min(localIdx * 0.05, 0.4)}}
+                                className="group relative block w-full cursor-zoom-in overflow-hidden rounded-lg"
                             >
+                                {!loadedImages.has(image.img) && (
+                                    <div
+                                        className="absolute inset-0 animate-pulse rounded-lg bg-textWarm/10 dark:bg-white/10"
+                                        style={{aspectRatio: `${image.width} / ${image.height}`}}
+                                    />
+                                )}
                                 <motion.img
                                     whileHover={{scale: 1.08}}
                                     transition={{duration: 0.3}}
                                     loading={"lazy"}
+                                    onLoad={() => markLoaded(image.img)}
                                     src={image.img}
                                     alt=""
                                     style={{aspectRatio: `${image.width} / ${image.height}`}}
-                                    className="rounded-lg w-full h-auto object-cover"
+                                    className={`rounded-lg w-full h-auto object-cover transition-opacity duration-500 ${
+                                        loadedImages.has(image.img) ? "opacity-100" : "opacity-0"
+                                    }`}
                                 />
+                                <div
+                                    className="pointer-events-none absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/40 via-black/0 to-black/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                                    <IoExpandOutline className="text-3xl text-white drop-shadow"/>
+                                </div>
                             </motion.button>
                         ) : null)}
                     </div>
@@ -203,6 +224,10 @@ const MosaicGallery = () => {
                                         </p>
                                     </motion.div>)}
                                 </AnimatePresence>
+                                <div
+                                    className="absolute top-4 left-1/2 z-10 -translate-x-1/2 rounded-full bg-black/50 px-3 py-1 text-xs font-medium text-white">
+                                    {(selectedIndex ?? 0) + 1} / {images.length}
+                                </div>
                                 {selected.text && (
                                     <motion.button
                                         onClick={() => setDescriptionOpen(!descriptionOpen)}

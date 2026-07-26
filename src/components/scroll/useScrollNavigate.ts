@@ -1,10 +1,12 @@
+const HEADER_OFFSET = 96;
+
 const useScrollNavigate = () => {
-    return (id:string) => {
+    return (id: string) => {
         const element = document.getElementById(id);
 
         if (element) {
             window.scrollTo({
-                top: element.offsetTop,
+                top: element.offsetTop - HEADER_OFFSET,
                 behavior: 'smooth',
             });
         }
