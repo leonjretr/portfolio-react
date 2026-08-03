@@ -15,27 +15,19 @@ const ProjectsCarousel: React.FC = () => {
     const projImg1 = new URL("/imgs/portfolio1.png", import.meta.url).href;
     const projImg2 = new URL("/imgs/traffix2.png", import.meta.url).href;
     const projImg3 = new URL("/imgs/inktells.png", import.meta.url).href;
+    const projImg4 = new URL("/imgs/things-talk.png", import.meta.url).href;
 
     const projects = [
         <ProjectCard key={1}
-                     title={"Portfolio website"}
-                     description={"My personal landing page to showcase my skills and experience"}
-                     deepDescription={"Personal landing page was my first pet project ever!😱 I tried to incorporate " +
-                         "maximum amount of features that I'd learnt in order to showcase my skills and experience🔥🤓 " +
-                         "Popups, animations, terminal(which I find quaint and extraordinary) and much-much more!"}
-                     internalTitle={"Personal landing page"}
-                     image={projImg1}
+                     title={"Things Talk"}
+                     internalTitle={"things fade. stories don't"}
+                     description={"A place for people to share stories that matter"}
+                     deepDescription={"Things Talk is website that allows any person to " +
+                         "share emotions and thoughts that their things give them. Whether it is a camera your granddad gifted to you, " +
+                         "first car you bought or just a receipt from 2010 - it doesn't matter. Things fade. Stories don't."}
+                     image={projImg4}
         />,
         <ProjectCard key={2}
-                     title={"TraffiX - web app"}
-                     description={"A modern web app that targets Telegram Mini Apps mobile platform"}
-                     deepDescription={"TraffiX is a clicker web game on Telegram platform" +
-                         " which became my second pet project, though at first it meant to be commercial." +
-                         " It was made by my friend and me, I was responsible for front-end part."}
-                     internalTitle={"Revolutionary web app"}
-                     image={projImg2}
-        />,
-        <ProjectCard key={3}
                      title={"Inktells"}
                      internalTitle={"Inktells - place that connects"}
                      description={"Inktells - a special place for readers to connect and share their hobby"}
@@ -44,6 +36,25 @@ const ProjectsCarousel: React.FC = () => {
                          "publish their own story on the website and spread the useful habit of reading."}
                      image={projImg3}
         />,
+        <ProjectCard key={3}
+                     title={"Portfolio website"}
+                     description={"My personal landing page to showcase my skills and experience"}
+                     deepDescription={"Personal landing page was my first pet project ever!😱 I tried to incorporate " +
+                         "maximum amount of features that I'd learnt in order to showcase my skills and experience🔥🤓 " +
+                         "Popups, animations, terminal(which I find quaint and extraordinary) and much-much more!"}
+                     internalTitle={"Personal landing page"}
+                     image={projImg1}
+        />,
+        <ProjectCard key={4}
+                     title={"TraffiX - web app"}
+                     description={"A modern web app that targets Telegram Mini Apps mobile platform"}
+                     deepDescription={"TraffiX is a clicker web game on Telegram platform" +
+                         " which became my second pet project, though at first it meant to be commercial." +
+                         " It was made by my friend and me, I was responsible for front-end part."}
+                     internalTitle={"Revolutionary web app"}
+                     image={projImg2}
+        />,
+
     ];
 
     useEffect(() => {

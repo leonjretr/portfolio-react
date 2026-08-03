@@ -18,6 +18,7 @@ export default {
                 poppinsFont: ['Poppins'],
                 interFont: ['Inter'],
                 terminalFont: ['Fira Code'],
+                unboundedFont: ['Unbounded'],
             },
             colors: {
                 mainColor: "#e5e7eb",
