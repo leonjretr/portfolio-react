@@ -31,6 +31,13 @@ const images: GalleryImage[] = [
     {img: "/gallery/img128.jpg", text: "", width: 1600, height: 2512, tag: "FRAME 15", span: {c: 2, r: 2}},
     {img: "/gallery/img176.jpg", text: "", width: 1600, height: 998, tag: "FRAME 16", span: {c: 2, r: 1}},
     {img: "/gallery/img197.jpg", text: "", width: 1600, height: 2502, tag: "FRAME 17", span: {c: 1, r: 2}},
+    {img: "/gallery/img232.jpg", text: "", width: 1600, height: 2506, tag: "FRAME 18", span: {c: 1, r: 2}},
+    {img: "/gallery/img242.jpg", text: "", width: 1600, height: 2510, tag: "FRAME 19", span: {c: 1, r: 1}},
+    {img: "/gallery/img244.jpg", text: "", width: 1600, height: 1090, tag: "FRAME 20", span: {c: 2, r: 1}},
+    {img: "/gallery/img245.jpg", text: "", width: 1600, height: 989, tag: "FRAME 21", span: {c: 1, r: 1}},
+    {img: "/gallery/img258.jpg", text: "", width: 1600, height: 2483, tag: "FRAME 22", span: {c: 2, r: 2}},
+    {img: "/gallery/img272.jpg", text: "", width: 1600, height: 2465, tag: "FRAME 23", span: {c: 1, r: 2}},
+    {img: "/gallery/img277.jpg", text: "", width: 1600, height: 2530, tag: "FRAME 24", span: {c: 1, r: 1}},
 ];
 
 export const Ticks = ({count = 13, className = ""}: { count?: number; className?: string }) => (
