@@ -19,6 +19,7 @@ export default {
                 interFont: ['Inter'],
                 terminalFont: ['Fira Code'],
                 unboundedFont: ['Unbounded'],
+                handFont: ['Caveat', 'cursive'],
             },
             colors: {
                 mainColor: "#e5e7eb",

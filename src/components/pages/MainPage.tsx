@@ -3,6 +3,7 @@ import HorizontalDivider from "../dividers/HorizontalDivider.tsx";
 import AboutSection from "../sections/AboutSection.tsx";
 import ProjectSection from "../sections/ProjectSection.tsx";
 import ContactSection from "../sections/ContactSection.tsx";
+import DarkroomSection from "../sections/DarkroomSection.tsx";
 import ToastStore from "../../stores/ToastStore.ts";
 import {observer} from "mobx-react-lite";
 import Toast from "../toasts/Toast.tsx";
@@ -40,10 +41,24 @@ const MainPage = observer(() => {
                             сapturing light. сrafting code.
                         </motion.p>
                     </div>
+
+                    <motion.div
+                        initial={{opacity: 0, y: 12}}
+                        animate={{opacity: 1, y: 0}}
+                        transition={{duration: 0.8, delay: 0.6}}
+                        className={"absolute bottom-5 right-5 md:bottom-7 md:right-8 text-right text-white/85"}>
+                        <div className={"font-terminalFont text-[10px] md:text-xs tracking-[2px] text-white/60"}>
+                            SHEFFIELD · ENGLAND
+                        </div>
+                    </motion.div>
                 </div>
 
                 <div className={"scroll-smooth mt-5"} id={"projects"}>
                     <ProjectSection/>
+                </div>
+
+                <div className={"scroll-smooth"} id={"darkroom"}>
+                    <DarkroomSection/>
                 </div>
 
                 <HorizontalDivider/>
@@ -52,6 +67,7 @@ const MainPage = observer(() => {
                     <AboutSection/>
                 </div>
 
+                <div className={"mt-16"}/>
                 <HorizontalDivider/>
 
                 <div className={"scroll-smooth"} id={"contact"}>

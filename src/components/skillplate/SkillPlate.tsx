@@ -10,7 +10,7 @@ const SkillPlate:FC<SkillPlateProps> = ({skillTitle, color}) => {
     return (
         <motion.div
             whileHover={{scale:1.07}}
-            className={"flex items-center hover:shadow-md hover:shadow-gray-300  rounded-lg cursor-pointer"}>
+            className={"flex items-center rounded-lg cursor-pointer hover:shadow-md hover:shadow-black/20 dark:hover:shadow-black/40"}>
             <div className={"flex w-auto p-1.5 h-8 items-center text-white text-lg bg-greenDark font-interFont font-extrabold rounded-l-lg"}>
             #
             </div>

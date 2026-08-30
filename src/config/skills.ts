@@ -1,16 +1,45 @@
-export const skills = [
-    {skillName: "React", color: "bg-greenNew"}, {skillName: "JavaScript", color: "bg-greenNew"},
-    {skillName: "TypeScript", color: "bg-greenNew"},
-    {skillName: "Next.js", color: "bg-greenNew"},
-    {skillName: "Tailwind CSS", color: "bg-greenNew"},
-    {skillName: "Git", color: "bg-greenNew"},
-    {skillName: "PostgreSQL", color: "bg-greenNew"},
-    {skillName: "MySQL", color: "bg-greenNew"},
-    {skillName: "Drizzle ORM", color: "bg-greenNew"}, {skillName: "Zod", color: "bg-greenNew"},
+export interface Skill {
+    skillName: string;
+    color: string;
+}
 
-    {skillName: "Framer Motion", color: "bg-greenNew"},
+export interface SkillGroup {
+    label: string;
+    skills: Skill[];
+}
 
-    {skillName: "MobX", color: "bg-greenNew"}, {skillName: "Zustand", color: "bg-greenNew"},
+const chip = (skillName: string): Skill => ({skillName, color: "bg-greenNew"});
 
-    {skillName: "Claude Code", color: "bg-greenNew"}
+export const skillGroups: SkillGroup[] = [
+    {
+        label: "main",
+        skills: [
+            chip("React"),
+            chip("Next.js"),
+            chip("TypeScript"),
+            chip("JavaScript"),
+            chip("Tailwind CSS"),
+            chip("Framer Motion"),
+        ],
+    },
+    {
+        label: "other",
+        skills: [
+            chip("MobX"),
+            chip("Zustand"),
+            chip("PostgreSQL"),
+            chip("MySQL"),
+            chip("Drizzle ORM"),
+            chip("Zod"),
+        ],
+    },
+    {
+        label: "useful",
+        skills: [
+            chip("Git"),
+            chip("Claude Code"),
+        ],
+    },
 ];
+
+export const skills: Skill[] = skillGroups.flatMap((g) => g.skills);

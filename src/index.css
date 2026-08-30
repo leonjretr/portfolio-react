@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -41,28 +42,20 @@
 }
 
 
-@keyframes marquee-loop {
-    0% {
-        transform: translateX(0);
+@layer components {
+    /* first letter of the text */
+    .bio-dropcap::first-letter {
+        font-family: 'Lora', serif;
+        font-weight: 700;
+        font-size: 4.2rem;
+        line-height: 0.78;
+        float: left;
+        padding-right: 10px;
+        margin-top: 4px;
+        color: theme('colors.greenDark');
     }
-    100% {
-        transform: translateX(-50%);
-    }
-}
 
-@keyframes marquee-loop-reverse {
-    0% {
-        transform: translateX(0);
+    .dark .bio-dropcap::first-letter {
+        color: theme('colors.greenNew');
     }
-    100% {
-        transform: translateX(50%);
-    }
-}
-
-.animate-marquee-loop {
-    animation: marquee-loop linear infinite;
-}
-
-.animate-marquee-loop-reverse {
-    animation: marquee-loop-reverse linear infinite;
 }
