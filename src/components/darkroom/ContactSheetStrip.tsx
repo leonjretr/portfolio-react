@@ -11,7 +11,7 @@ const frames = [
 
 // a row of film holes along the strip.
 const SprocketRail = () => (
-    <div className="flex shrink-0 items-center justify-center gap-[10px] px-3 py-2">
+    <div className="flex items-center justify-center gap-[10px] overflow-hidden px-3 py-2">
         {Array.from({length: 24}, (_, k) => (
             <div key={k} className="h-2 w-[11px] shrink-0 rounded-[2px] bg-textWarm/25 dark:bg-white/25"/>
         ))}

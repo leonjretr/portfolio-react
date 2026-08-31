@@ -11,6 +11,10 @@
 @tailwind utilities;
 
 @layer base {
+    html, body {
+        @apply overflow-x-hidden;
+    }
+
     body {
         @apply bg-creamColor text-textWarm transition-colors duration-300;
     }
