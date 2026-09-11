@@ -14,18 +14,3 @@ const PhotoSection = () => {
 };
 
 export default PhotoSection;
-
-// <img className={"w-full h-full rounded-xl"} src={myPhoto} alt={"Me"}/>
-// initial={{
-//     opacity: 0,
-//         // if odd index card,slide from right instead of left
-//         x: key % 2 === 0 ? 50 : -50
-// }}
-// whileInView={{
-//     opacity: 1,
-//         x: 0, // Slide in to its original position
-//         transition: {
-//         duration: 0.5 // Animation duration
-//     }
-// }}
-// viewport={{once: true}}
