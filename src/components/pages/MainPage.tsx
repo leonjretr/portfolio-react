@@ -42,15 +42,15 @@ const MainPage = observer(() => {
                         </motion.p>
                     </div>
 
-                    <motion.div
-                        initial={{opacity: 0, y: 12}}
-                        animate={{opacity: 1, y: 0}}
-                        transition={{duration: 0.8, delay: 0.6}}
-                        className={"absolute bottom-5 right-5 md:bottom-7 md:right-8 text-right text-white/85"}>
-                        <div className={"font-terminalFont text-[10px] md:text-xs tracking-[2px] text-white/60"}>
-                            SHEFFIELD · ENGLAND
-                        </div>
-                    </motion.div>
+                    {/*<motion.div*/}
+                    {/*    initial={{opacity: 0, y: 12}}*/}
+                    {/*    animate={{opacity: 1, y: 0}}*/}
+                    {/*    transition={{duration: 0.8, delay: 0.6}}*/}
+                    {/*    className={"absolute bottom-5 right-5 md:bottom-7 md:right-8 text-right text-white/85"}>*/}
+                    {/*    <div className={"font-terminalFont text-[10px] md:text-xs tracking-[2px] text-white/60"}>*/}
+                    {/*        SHEFFIELD · ENGLAND*/}
+                    {/*    </div>*/}
+                    {/*</motion.div>*/}
                 </div>
 
                 <div className={"scroll-smooth mt-5"} id={"projects"}>
