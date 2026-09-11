@@ -1,6 +1,6 @@
 import {BrowserRouter as Router} from "react-router-dom";
 import MyRouting from "./components/routing/MyRouting.tsx";
-import {Analytics} from "@vercel/analytics/next"
+import {Analytics} from "@vercel/analytics/react"
 
 function App() {
     return (
