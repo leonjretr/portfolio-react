@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@vercel/analytics": "^2.0.1",
     "emailjs": "^4.0.3",
     "framer-motion": "^11.3.28",
     "mobx": "^6.13.1",
