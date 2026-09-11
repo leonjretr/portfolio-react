@@ -1,4 +1,3 @@
-// import MainPage from "./components/pages/MainPage.tsx";
 import {BrowserRouter as Router} from "react-router-dom";
 import MyRouting from "./components/routing/MyRouting.tsx";
 import {Analytics} from "@vercel/analytics/next"
