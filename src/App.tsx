@@ -5,7 +5,7 @@ import {Analytics} from "@vercel/analytics/react"
 function App() {
     return (
         <div>
-            <div className={"min-h-screen h-screen bg-white dark:bg-bgDarkColor scroll-smooth"}>
+            <div className={"min-h-screen bg-white dark:bg-bgDarkColor scroll-smooth"}>
                 <Router>
                     <MyRouting/>
                     <Analytics/>
