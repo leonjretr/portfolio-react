@@ -1,33 +1,22 @@
 import {motion} from "framer-motion";
-import {useEffect, useState} from "react";
 import {LuSunMedium} from "react-icons/lu";
 import {IoMoonOutline} from "react-icons/io5";
+import {useTheme} from "../../context/ThemeContext.tsx";
 
 interface ThemeToggleProps {
     transparent?: boolean;
 }
 
 const ThemeToggle = ({transparent = false}: ThemeToggleProps) => {
-    const [theme, setTheme] = useState<'light' | 'dark'>("dark");
-
-    useEffect(() => {
-        if (theme === 'dark') {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    }, [theme]);
-
-    const toggleTheme = () => {
-        setTheme(theme === 'light' ? 'dark' : 'light');
-    };
+    const {theme, toggleTheme} = useTheme();
 
     return (
         <div className="">
             <label className="inline-flex items-center cursor-pointer">
                 <input type="checkbox"
                        className="sr-only"
-                       onClick={toggleTheme}
+                       checked={theme === "dark"}
+                       onChange={toggleTheme}
                 />
                 {theme === "dark" ? (
                     <div className={"flex items-center"}>
