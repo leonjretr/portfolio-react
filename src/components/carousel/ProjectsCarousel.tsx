@@ -49,7 +49,7 @@ const ProjectsCarousel: React.FC = () => {
                     transition={{type: "spring", stiffness: 300, damping: 32}}>
                     {projectCards.map((project, index) => (
                         <motion.div
-                            key={project.title}
+                            key={project.slug}
                             ref={index === 0 ? cardRef : undefined}
                             animate={{
                                 opacity: index === currentIndex ? 1 : 0.35,

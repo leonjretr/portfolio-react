@@ -26,10 +26,7 @@ const TerminalBar: FC<{ filename: string }> = ({filename}) => (
     </div>
 );
 
-const toSlug = (value: string) =>
-    value.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
-
-const ProjectCard: FC<Project> = ({title, description, deepDescription, internalTitle, image, link}) => {
+const ProjectCard: FC<Project> = ({title, slug, description, deepDescription, internalTitle, image, link}) => {
 
     const [isModalOpened, setIsModalOpened] = useState(false);
 
@@ -40,7 +37,7 @@ const ProjectCard: FC<Project> = ({title, description, deepDescription, internal
         document.body.classList.toggle("overflow-hidden", isModalOpened);
     }, [isModalOpened]);
 
-    const filename = `${toSlug(internalTitle || title)}.raw`;
+    const filename = `${slug}.raw`;
 
     return (
         <motion.div
