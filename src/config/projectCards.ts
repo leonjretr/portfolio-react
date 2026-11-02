@@ -9,6 +9,7 @@ export type ProjectLink = {
 
 export type Project = {
     title: string;
+    slug: string;
     internalTitle?: string;
     description: string;
     deepDescription: string;
@@ -27,6 +28,7 @@ const traffixImg = new URL("/imgs/traffix2.png", import.meta.url).href;
 export const projectCards: Project[] = [
     {
         title: "Treadfire",
+        slug: "treadfire",
         internalTitle: "Cover breaks. Skill wins.",
         description: "Official website for Treadfire - an online PvP tank shooter",
         deepDescription: "Treadfire is the official promotional website for an upcoming online PvP tank " +
@@ -39,6 +41,7 @@ export const projectCards: Project[] = [
     },
     {
         title: "Things Talk",
+        slug: "things_talk",
         internalTitle: "things fade. stories don't",
         description: "A place for people to share stories that matter",
         deepDescription: "Things Talk is website that allows any person to " +
@@ -49,6 +52,7 @@ export const projectCards: Project[] = [
     },
     {
         title: "Inktells",
+        slug: "inktells",
         internalTitle: "Inktells - place that connects",
         description: "Inktells - a special place for readers to connect and share their hobby",
         deepDescription: "Inktells is website that allows readers all around the world to " +
@@ -59,6 +63,7 @@ export const projectCards: Project[] = [
     },
     {
         title: "Portfolio website",
+        slug: "portfolio",
         internalTitle: "Personal landing page",
         description: "My personal landing page to showcase my skills and experience",
         deepDescription: "Personal landing page was my first pet project ever!😱 I tried to incorporate " +
@@ -69,6 +74,7 @@ export const projectCards: Project[] = [
     },
     {
         title: "TraffiX - web app",
+        slug: "traffix",
         internalTitle: "Revolutionary web app",
         description: "A modern web app that targets Telegram Mini Apps mobile platform",
         deepDescription: "TraffiX is a clicker web game on Telegram platform" +
