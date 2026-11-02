@@ -21,7 +21,7 @@ const SectionTitle = ({
     const alignItems = align === "center" ? "items-center text-center" : "items-start text-left";
 
     return (
-        <div className={`flex flex-col gap-3 ${alignItems} ${className}`}>
+        <div className={`flex flex-col ${alignItems} ${className}`}>
             {kicker && (
                 <motion.span
                     initial={reduce ? {opacity: 0} : {opacity: 0, y: 10}}
