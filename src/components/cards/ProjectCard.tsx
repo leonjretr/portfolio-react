@@ -2,16 +2,7 @@ import {motion} from "framer-motion";
 import {FC, useEffect, useState} from "react";
 import ModalProjectCard from "../modals/ModalProjectCard.tsx";
 import SocialLinkButton from "../buttons/SocialLinkButton.tsx";
-import {FaGithub} from "react-icons/fa";
-import {GITHUB_LINK} from "../../config/constants.ts";
-
-interface ProjectCardProps {
-    image?: string;
-    title: string;
-    description: string;
-    deepDescription: string;
-    internalTitle?: string;
-}
+import {Project} from "../../config/projectCards.ts";
 
 const CORNER_CLASSES = [
     "left-2.5 top-2.5 border-l-2 border-t-2",
@@ -38,7 +29,7 @@ const TerminalBar: FC<{ filename: string }> = ({filename}) => (
 const toSlug = (value: string) =>
     value.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
 
-const ProjectCard: FC<ProjectCardProps> = ({title, description, deepDescription, internalTitle, image}) => {
+const ProjectCard: FC<Project> = ({title, description, deepDescription, internalTitle, image, link}) => {
 
     const [isModalOpened, setIsModalOpened] = useState(false);
 
@@ -105,7 +96,7 @@ const ProjectCard: FC<ProjectCardProps> = ({title, description, deepDescription,
                             {deepDescription}
                         </h2>
                         <div className={"animate-bounce mt-3 text-greenNew"}>
-                            <SocialLinkButton icon={<FaGithub/>} link={GITHUB_LINK}/>
+                            <SocialLinkButton icon={<link.icon/>} link={link.href}/>
                         </div>
                     </div>
                 </ModalProjectCard>
