@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import ProjectCard from "../cards/ProjectCard.tsx";
 import {IoArrowBackCircleOutline, IoArrowForwardCircleOutline} from "react-icons/io5";
 import {motion} from 'framer-motion';
+import {projectCards} from "../../config/projectCards.ts";
 
 const GAP = 40;
 
@@ -11,51 +12,6 @@ const ProjectsCarousel: React.FC = () => {
     const [offset, setOffset] = useState(0);
     const containerRef = useRef<HTMLDivElement>(null);
     const cardRef = useRef<HTMLDivElement>(null);
-
-    const projImg1 = new URL("/imgs/portfolio1.png", import.meta.url).href;
-    const projImg2 = new URL("/imgs/traffix2.png", import.meta.url).href;
-    const projImg3 = new URL("/imgs/inktells.png", import.meta.url).href;
-    const projImg4 = new URL("/imgs/things-talk.png", import.meta.url).href;
-
-    const projects = [
-        <ProjectCard key={1}
-                     title={"Things Talk"}
-                     internalTitle={"things fade. stories don't"}
-                     description={"A place for people to share stories that matter"}
-                     deepDescription={"Things Talk is website that allows any person to " +
-                         "share emotions and thoughts that their things give them. Whether it is a camera your granddad gifted to you, " +
-                         "first car you bought or just a receipt from 2010 - it doesn't matter. Things fade. Stories don't."}
-                     image={projImg4}
-        />,
-        <ProjectCard key={2}
-                     title={"Inktells"}
-                     internalTitle={"Inktells - place that connects"}
-                     description={"Inktells - a special place for readers to connect and share their hobby"}
-                     deepDescription={"Inktells is website that allows readers all around the world to " +
-                         "share their passion for books and stories. It enables any person to register and " +
-                         "publish their own story on the website and spread the useful habit of reading."}
-                     image={projImg3}
-        />,
-        <ProjectCard key={3}
-                     title={"Portfolio website"}
-                     description={"My personal landing page to showcase my skills and experience"}
-                     deepDescription={"Personal landing page was my first pet project ever!😱 I tried to incorporate " +
-                         "maximum amount of features that I'd learnt in order to showcase my skills and experience🔥🤓 " +
-                         "Popups, animations, terminal(which I find quaint and extraordinary) and much-much more!"}
-                     internalTitle={"Personal landing page"}
-                     image={projImg1}
-        />,
-        <ProjectCard key={4}
-                     title={"TraffiX - web app"}
-                     description={"A modern web app that targets Telegram Mini Apps mobile platform"}
-                     deepDescription={"TraffiX is a clicker web game on Telegram platform" +
-                         " which became my second pet project, though at first it meant to be commercial." +
-                         " It was made by my friend and me, I was responsible for front-end part."}
-                     internalTitle={"Revolutionary web app"}
-                     image={projImg2}
-        />,
-
-    ];
 
     useEffect(() => {
         const measure = () => {
@@ -70,7 +26,7 @@ const ProjectsCarousel: React.FC = () => {
         return () => window.removeEventListener("resize", measure);
     }, []);
 
-    const handleNext = () => setCurrentIndex((i) => Math.min(i + 1, projects.length - 1));
+    const handleNext = () => setCurrentIndex((i) => Math.min(i + 1, projectCards.length - 1));
     const handlePrev = () => setCurrentIndex((i) => Math.max(i - 1, 0));
 
     return (
@@ -91,9 +47,9 @@ const ProjectsCarousel: React.FC = () => {
                     style={{gap: GAP}}
                     animate={{x: offset - currentIndex * step}}
                     transition={{type: "spring", stiffness: 300, damping: 32}}>
-                    {projects.map((project, index) => (
+                    {projectCards.map((project, index) => (
                         <motion.div
-                            key={project.key}
+                            key={project.title}
                             ref={index === 0 ? cardRef : undefined}
                             animate={{
                                 opacity: index === currentIndex ? 1 : 0.35,
@@ -101,7 +57,7 @@ const ProjectsCarousel: React.FC = () => {
                             }}
                             transition={{duration: 0.4}}
                             className="shrink-0">
-                            {project}
+                            <ProjectCard {...project}/>
                         </motion.div>
                     ))}
                 </motion.div>
@@ -110,7 +66,7 @@ const ProjectsCarousel: React.FC = () => {
             <motion.button
                 whileHover={{scale: 1.1}}
                 whileTap={{scale: 0.85}}
-                disabled={currentIndex === projects.length - 1}
+                disabled={currentIndex === projectCards.length - 1}
                 className="shrink-0 rounded-full transition-opacity disabled:opacity-30"
                 onClick={handleNext}>
                 <IoArrowForwardCircleOutline className={"text-3xl mob2:text-4xl mob3:text-5xl"}/>
