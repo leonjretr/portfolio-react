@@ -18,12 +18,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-{/*<button className={"relative font-poppinsFont font-medium m-4 hover:bg-cyan-200 rounded-lg p-1.5"}>*/
-}
-{/*    Twitter*/
-}
-{/*    <span className={"absolute left-0 bottom-0 w-full border-black border-2 transform scale-x-0 transition-transform duration-300 ease-in-out hover:scale-x-100"}></span>*/
-}
-{/*</button>*/
-}
