@@ -1,7 +1,6 @@
 import {motion} from "framer-motion";
 import {FC} from "react";
-import useScrollNavigate from "../scroll/useScrollNavigate.ts";
-import {useLocation, useNavigate} from "react-router";
+import {useSectionNavigate} from "../scroll";
 
 interface NavButtonProps {
     text: string;
@@ -9,18 +8,9 @@ interface NavButtonProps {
 }
 
 const NavButton: FC<NavButtonProps> = ({text, sectionLink}) => {
-    const nav = useScrollNavigate();
-    const goTo = useNavigate();
-    const location = useLocation();
+    const navigateToSection = useSectionNavigate();
+    const butClick = () => navigateToSection(sectionLink);
 
-    const butClick = () => {
-        if (location.pathname === "/blog") {
-            goTo("/");
-            setTimeout(() => nav(sectionLink), 750);
-        } else {
-            nav(sectionLink);
-        }
-    }
     return (
         <motion.button
             className={"w-max p-2 transition-colors hover:text-greenNew dark:hover:text-greenNew"}

@@ -14,7 +14,7 @@ const FooterSocialButton: FC<FooterSocialButtonProps> = ({title, link}) => {
             <motion.button
                 whileHover={{scale: 1.1}}
                 whileTap={{scale: 0.87}}
-                className={"relative group font-poppinsFont font-medium m-4 rounded-lg p-1.5"}>
+                className={"relative group font-poppinsFont font-medium m-2 mob2:m-4 rounded-lg p-1.5"}>
                 {title}
                 <span
                     className={"absolute bottom-0.5 left-0.5 w-0 h-0.5 bg-black dark:bg-white transition-all group-hover:w-full"}></span>

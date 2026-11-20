@@ -1,7 +1,11 @@
 import PageWrapper from "../wrappers/PageWrapper.tsx";
 import MosaicGallery, {Ticks} from "../gallery/MosaicGallery.tsx";
+import {useDocumentMeta} from "../seo";
+import {PAGE_META} from "../../config/site.ts";
 
 const BlogPage = () => {
+    useDocumentMeta({title: PAGE_META.BLOG.TITLE, description: PAGE_META.BLOG.DESCRIPTION});
+
     return (
         <div className={"min-h-screen bg-creamColor text-textWarm dark:bg-bgDarkColor dark:text-white scroll-smooth"}>
             <PageWrapper>

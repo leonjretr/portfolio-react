@@ -47,6 +47,9 @@ export default {
             },
             fontSize: {
                 xxs: "0.5rem"
+            },
+            zIndex: {
+                shutter: "70",
             }
         },
     },

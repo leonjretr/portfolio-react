@@ -1,7 +1,9 @@
+import {useCallback} from "react";
+
 const HEADER_OFFSET = 96;
 
 const useScrollNavigate = () => {
-    return (id: string) => {
+    return useCallback((id: string) => {
         const element = document.getElementById(id);
 
         if (element) {
@@ -10,7 +12,7 @@ const useScrollNavigate = () => {
                 behavior: 'smooth',
             });
         }
-    }
+    }, []);
 }
 
 export default useScrollNavigate;

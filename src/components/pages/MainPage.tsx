@@ -8,8 +8,14 @@ import ToastStore from "../../stores/ToastStore.ts";
 import {observer} from "mobx-react-lite";
 import Toast from "../toasts/Toast.tsx";
 import {motion} from "framer-motion";
+import {useSectionArrival} from "../scroll";
+import {useDocumentMeta} from "../seo";
+import {PAGE_META} from "../../config/site.ts";
 
 const MainPage = observer(() => {
+    useSectionArrival();
+    useDocumentMeta({title: PAGE_META.HOME.TITLE, description: PAGE_META.HOME.DESCRIPTION});
+
     return (
         <div className={"min-h-screen scroll-smooth"}>
             <PageWrapper>

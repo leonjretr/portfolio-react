@@ -2,7 +2,11 @@ import {motion} from "framer-motion";
 import {FC, useEffect, useState} from "react";
 import ModalProjectCard from "../modals/ModalProjectCard.tsx";
 import SocialLinkButton from "../buttons/SocialLinkButton.tsx";
+import {Link} from "react-router-dom";
+import {TerminalBar} from "./TerminalBar.tsx";
 import {Project} from "../../config/projectCards.ts";
+import {CASE_STUDY_COPY} from "../../config/caseStudy.ts";
+import {getProjectFileName, getProjectPath} from "../../utils";
 
 const CORNER_CLASSES = [
     "left-2.5 top-2.5 border-l-2 border-t-2",
@@ -10,21 +14,6 @@ const CORNER_CLASSES = [
     "bottom-2.5 left-2.5 border-b-2 border-l-2",
     "bottom-2.5 right-2.5 border-b-2 border-r-2",
 ];
-
-const Dots: FC = () => (
-    <div className="flex gap-1.5">
-        <span className="h-2 w-2 rounded-full bg-greenNew"/>
-        <span className="h-2 w-2 rounded-full bg-creamColor/25"/>
-        <span className="h-2 w-2 rounded-full bg-creamColor/25"/>
-    </div>
-);
-
-const TerminalBar: FC<{ filename: string }> = ({filename}) => (
-    <div className="flex items-center justify-between bg-bgDarkColor px-4 py-2 text-creamColor">
-        <Dots/>
-        <span className="font-terminalFont text-xxs tracking-wide opacity-75">{filename}</span>
-    </div>
-);
 
 const ProjectCard: FC<Project> = ({title, slug, description, deepDescription, internalTitle, image, link}) => {
 
@@ -35,9 +24,10 @@ const ProjectCard: FC<Project> = ({title, slug, description, deepDescription, in
 
     useEffect(() => {
         document.body.classList.toggle("overflow-hidden", isModalOpened);
+        return () => document.body.classList.remove("overflow-hidden");
     }, [isModalOpened]);
 
-    const filename = `${slug}.raw`;
+    const filename = getProjectFileName(slug);
 
     return (
         <motion.div
@@ -92,6 +82,11 @@ const ProjectCard: FC<Project> = ({title, slug, description, deepDescription, in
                         <h2 className="flex justify-center text-sm text-justify max-w-screen-mob2 font-poppinsFont font-medium break-keep mb-2 text-textWarm/80 dark:text-white/80">
                             {deepDescription}
                         </h2>
+                        <Link
+                            to={getProjectPath(slug)}
+                            className="self-center border-b border-transparent font-terminalFont text-xs text-greenDark transition-colors hover:border-greenDark dark:text-greenNew dark:hover:border-greenNew md:text-sm">
+                            {CASE_STUDY_COPY.OPEN}
+                        </Link>
                         <div className={"animate-bounce mt-3 text-greenNew"}>
                             <SocialLinkButton icon={<link.icon/>} link={link.href}/>
                         </div>
