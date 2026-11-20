@@ -1,6 +1,6 @@
 import {motion} from "framer-motion";
-import useScrollNavigate from "../scroll/useScrollNavigate.ts";
-import {useLocation, useNavigate} from "react-router";
+import {useSectionNavigate} from "../scroll";
+import {SECTIONS} from "../../config/routes.ts";
 
 const TICK_X = [4, 34, 64, 94, 124, 154, 184, 214, 244, 274, 304];
 
@@ -13,17 +13,9 @@ const TickRow = ({y}: { y: number }) => (
 );
 
 const HomeButton = () => {
-    const nav = useScrollNavigate();
-    const goTo = useNavigate();
-    const location = useLocation();
-    const butClick = () => {
-        if (location.pathname === "/blog") {
-            goTo("/");
-            setTimeout(() => nav("home"), 750);
-        } else {
-            nav("home");
-        }
-    }
+    const navigateToSection = useSectionNavigate();
+    const butClick = () => navigateToSection(SECTIONS.HOME);
+
     return (
         <motion.button whileHover={{scale: 1.15}}
                        whileTap={{scale: 0.9}}

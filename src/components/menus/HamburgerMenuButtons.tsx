@@ -1,4 +1,5 @@
-import useScrollNavigate from "../scroll/useScrollNavigate.ts";
+import {useSectionNavigate} from "../scroll";
+import {ROUTES} from "../../config/routes.ts";
 import {FC} from "react";
 import {motion} from "framer-motion";
 import {useLocation, useNavigate} from "react-router";
@@ -10,9 +11,9 @@ interface HamburgerMenuButtonProps {
 }
 
 const HamburgerMenuButtons: FC<HamburgerMenuButtonProps> = ({sectionLink, text}) => {
-    const nav = useScrollNavigate();
+    const navigateToSection = useSectionNavigate();
     const goTo = useNavigate();
-    const location = useLocation();
+    const {pathname} = useLocation();
 
     const itemVariants = {
         hidden: {opacity: 0, y: -20},
@@ -20,27 +21,22 @@ const HamburgerMenuButtons: FC<HamburgerMenuButtonProps> = ({sectionLink, text})
         exit: {opacity: 0, y: -20},
     };
 
+    const isRoute = sectionLink.startsWith(ROUTES.HOME);
+
     const butClick = () => {
-        if (location.pathname === "/blog") {
-            if (sectionLink != "/blog") {
-                goTo("/");
-                setTimeout(() => nav(sectionLink), 750);
-                HamburgerStore.setIsOpenFalse();
-            } else {
-                goTo("/blog");
-                HamburgerStore.setIsOpenFalse();
-                nav("bloghome");
-            }
-        } else {
-            if (sectionLink.startsWith("/")) {
-                goTo("/blog");
-                HamburgerStore.setIsOpenFalse();
-                setTimeout(() => nav("bloghome"), 400);
-            } else {
-                nav(sectionLink);
-                HamburgerStore.setIsOpenFalse();
-            }
+        HamburgerStore.setIsOpenFalse();
+
+        if (!isRoute) {
+            navigateToSection(sectionLink);
+            return;
         }
+
+        if (pathname === sectionLink) {
+            window.scrollTo({top: 0, behavior: "smooth"});
+            return;
+        }
+
+        goTo(sectionLink);
     }
     return (
         <motion.button

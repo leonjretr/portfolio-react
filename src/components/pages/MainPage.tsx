@@ -8,8 +8,11 @@ import ToastStore from "../../stores/ToastStore.ts";
 import {observer} from "mobx-react-lite";
 import Toast from "../toasts/Toast.tsx";
 import {motion} from "framer-motion";
+import {useSectionArrival} from "../scroll";
 
 const MainPage = observer(() => {
+    useSectionArrival();
+
     return (
         <div className={"min-h-screen scroll-smooth"}>
             <PageWrapper>
