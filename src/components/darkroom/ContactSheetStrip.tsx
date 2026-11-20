@@ -1,4 +1,5 @@
 import {motion, useReducedMotion, Variants} from "framer-motion";
+import {FILM_DEVELOP_VARIANTS} from "../../config/animations.ts";
 
 const frames = [
     {img: "/gallery/img057.jpg", label: "into the unknown"},
@@ -23,15 +24,6 @@ const strip: Variants = {
     shown: {transition: {staggerChildren: 0.16}},
 };
 
-// each frame develops from a negative into the positive
-const frame: Variants = {
-    hidden: {filter: "invert(1) sepia(0.5) contrast(0.75) saturate(0.4)"},
-    shown: {
-        filter: "invert(0) sepia(0) contrast(1) saturate(1)",
-        transition: {duration: 1.5, ease: [0.22, 1, 0.36, 1]},
-    },
-};
-
 const ContactSheetStrip = () => {
     const reduce = useReducedMotion();
 
@@ -50,7 +42,7 @@ const ContactSheetStrip = () => {
                     {frames.map((f, i) => (
                         <div key={f.img} className="relative min-w-[92px] flex-1">
                             <motion.img
-                                variants={reduce ? undefined : frame}
+                                variants={reduce ? undefined : FILM_DEVELOP_VARIANTS}
                                 src={f.img}
                                 alt={`Contact frame — ${f.label}`}
                                 loading="lazy"

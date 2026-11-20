@@ -1,4 +1,5 @@
 import {motion, useReducedMotion} from "framer-motion";
+import {FILM_DEVELOP_VARIANTS} from "../../config/animations.ts";
 
 
 const PortraitFrame = () => {
@@ -18,10 +19,10 @@ const PortraitFrame = () => {
                 <motion.img
                     src={myPhoto}
                     alt="Leonid — self portrait on 35mm"
-                    initial={reduce ? false : {filter: "grayscale(1)"}}
-                    whileInView={reduce ? undefined : {filter: "grayscale(0)"}}
+                    variants={FILM_DEVELOP_VARIANTS}
+                    initial={reduce ? false : "hidden"}
+                    whileInView={reduce ? undefined : "shown"}
                     viewport={{once: true, amount: 0.4}}
-                    transition={{duration: 1.1, ease: "easeOut"}}
                     className="h-56 w-52 object-cover mob3:h-64 mob3:w-60"
                 />
                 <span className="absolute right-2 top-2 font-terminalFont text-[9px] tracking-[2px] text-amateurColor mix-blend-difference">
