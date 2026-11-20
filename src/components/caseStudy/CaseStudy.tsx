@@ -1,6 +1,8 @@
 import {Project} from "../../config/projectCards.ts";
 import {CASE_STUDY_COPY} from "../../config/caseStudy.ts";
+import {SITE, TITLE_SEPARATOR} from "../../config/site.ts";
 import {getProjectFileName} from "../../utils";
+import {useDocumentMeta} from "../seo";
 import {CaseStudyHeader} from "./CaseStudyHeader.tsx";
 import {CaseStudyCover} from "./CaseStudyCover.tsx";
 import {CaseStudySection} from "./CaseStudySection.tsx";
@@ -15,6 +17,8 @@ type CaseStudyProps = {
 export const CaseStudy = ({project}: CaseStudyProps) => {
     const filename = getProjectFileName(project.slug);
     const {challenges, results, screenshots} = project.caseStudy ?? {};
+
+    useDocumentMeta({title: `${project.title}${TITLE_SEPARATOR}${SITE.NAME}`, description: project.description});
 
     return (
         <article className="mx-auto flex max-w-5xl flex-col gap-14 px-6 pb-20 pt-28 md:px-8 md:gap-20">
