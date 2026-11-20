@@ -1,4 +1,5 @@
 import HamburgerMenuButtons from "./HamburgerMenuButtons.tsx";
+import {CvButton} from "../buttons/CvButton.tsx";
 import {motion} from "framer-motion";
 import HamburgerStore from "../../stores/HamburgerStore.ts";
 import useIsScrolledPastHero from "../scroll/useIsScrolledPastHero.ts";
@@ -41,6 +42,9 @@ const HamburgerMenu = () => {
                 {MenuButtons.map((button) => (
                     <HamburgerMenuButtons key={button.link} text={button.text} sectionLink={button.link}/>
                 ))}
+                <div className={"pt-2"}>
+                    <CvButton/>
+                </div>
             </motion.div>
         </motion.div>
     );

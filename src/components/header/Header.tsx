@@ -3,6 +3,7 @@ import HomeButton from "../buttons/HomeButton.tsx";
 import Hamburger from "../menus/Hamburger.tsx";
 import ThemeToggle from "../toggle/ThemeToggle.tsx";
 import NavButton from "../buttons/NavButton.tsx";
+import {CvButton} from "../buttons/CvButton.tsx";
 import useIsScrolledPastHero from "../scroll/useIsScrolledPastHero.ts";
 
 const Header = () => {
@@ -30,7 +31,11 @@ const Header = () => {
 
             <div className={"col-start-3 flex items-center justify-end"}>
                 <div className={"hidden font-poppinsFont md:flex items-center gap-x-4"}>
-                    <NavButton text={"get in touch"} sectionLink={"contact"}/>
+                    <div className={"flex items-center gap-x-2"}>
+                        <NavButton text={"get in touch"} sectionLink={"contact"}/>
+                        <span className={"opacity-50"}>/</span>
+                        <CvButton/>
+                    </div>
                     <ThemeToggle transparent={!isScrolled}/>
                 </div>
                 <div className={"flex md:hidden"}>
