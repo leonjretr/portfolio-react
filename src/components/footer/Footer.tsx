@@ -15,6 +15,7 @@ const Footer = () => {
                 <FooterSocialButton title={"Telegram"} link={TELEGRAM_LINK}/>
                 <CvButton/>
             </div>
+            
         </div>
     );
 };
